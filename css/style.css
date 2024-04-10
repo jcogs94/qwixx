@@ -3,9 +3,13 @@
     margin: 0;
 }
 
-/* body tag used for temp visual reference */
 body {
+    /* for visual reference */
     background-color: gray;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Start of actual code */
@@ -13,27 +17,60 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: center;
-    width: 1000px;
+    justify-content: flex-start;
+    width: 927px;
     height: 600px;
-    margin: auto;
+    gap: 10px;
+
     background-color: white;
 }
 
-#number-grid {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "name name empty empty empty empty empty empty empty empty lockout lockout"
-        "red red red red red red red red red red lockout lockout"
-        "yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow lockout lockout"
-        "green green green green green green green green green green lockout lockout"
-        "blue blue blue blue blue blue blue blue blue blue lockout lockout";
-}
-
 #name {
-    grid-area: name;
+    margin: 10px 0 5px 40px;
 }
 
+#number-grid {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+}
 
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.numbers-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    padding: 5px;
+}
+
+.numbers, .lock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+    padding: 0;
+    background-color: white;
+    opacity: .8;
+}
+
+.lock {
+    border-radius: 100%;
+}
