@@ -19,3 +19,21 @@ body {
     margin: auto;
     background-color: white;
 }
+
+#number-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "name name empty empty empty empty empty empty empty empty lockout lockout"
+        "red red red red red red red red red red lockout lockout"
+        "yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow lockout lockout"
+        "green green green green green green green green green green lockout lockout"
+        "blue blue blue blue blue blue blue blue blue blue lockout lockout";
+}
+
+#name {
+    grid-area: name;
+}
+
+
