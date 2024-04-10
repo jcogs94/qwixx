@@ -9,61 +9,74 @@
 </head>
 <body>
     <div id="board">
-        <div class="numbers-row" id="red-row">
-            <div class="numbers">2</div>
-            <div class="numbers">3</div>
-            <div class="numbers">4</div>
-            <div class="numbers">5</div>
-            <div class="numbers">6</div>
-            <div class="numbers">7</div>
-            <div class="numbers">8</div>
-            <div class="numbers">9</div>
-            <div class="numbers">10</div>
-            <div class="numbers">11</div>
-            <div class="numbers">12</div>
-            <div class="lock">L</div>
-        </div>
-        <div class="numbers-row" id="yellow-row">
-            <div class="numbers">2</div>
-            <div class="numbers">3</div>
-            <div class="numbers">4</div>
-            <div class="numbers">5</div>
-            <div class="numbers">6</div>
-            <div class="numbers">7</div>
-            <div class="numbers">8</div>
-            <div class="numbers">9</div>
-            <div class="numbers">10</div>
-            <div class="numbers">11</div>
-            <div class="numbers">12</div>
-            <div class="lock">L</div>
-        </div>
-        <div class="numbers-row" id="green-row">
-            <div class="numbers">12</div>
-            <div class="numbers">11</div>
-            <div class="numbers">10</div>
-            <div class="numbers">9</div>
-            <div class="numbers">8</div>
-            <div class="numbers">7</div>
-            <div class="numbers">6</div>
-            <div class="numbers">5</div>
-            <div class="numbers">4</div>
-            <div class="numbers">3</div>
-            <div class="numbers">2</div>
-            <div class="lock">L</div>
-        </div>
-        <div class="numbers-row" id="blue-row">
-            <div class="numbers">12</div>
-            <div class="numbers">11</div>
-            <div class="numbers">10</div>
-            <div class="numbers">9</div>
-            <div class="numbers">8</div>
-            <div class="numbers">7</div>
-            <div class="numbers">6</div>
-            <div class="numbers">5</div>
-            <div class="numbers">4</div>
-            <div class="numbers">3</div>
-            <div class="numbers">2</div>
-            <div class="lock">L</div>
+        <div id="number-grid">
+            <h1 id="name">QWIXX</h1>
+            <div class="numbers-row" id="red-row">
+                <div class="numbers">2</div>
+                <div class="numbers">3</div>
+                <div class="numbers">4</div>
+                <div class="numbers">5</div>
+                <div class="numbers">6</div>
+                <div class="numbers">7</div>
+                <div class="numbers">8</div>
+                <div class="numbers">9</div>
+                <div class="numbers">10</div>
+                <div class="numbers">11</div>
+            </div>
+            <div class="numbers-row" id="yellow-row">
+                <div class="numbers">2</div>
+                <div class="numbers">3</div>
+                <div class="numbers">4</div>
+                <div class="numbers">5</div>
+                <div class="numbers">6</div>
+                <div class="numbers">7</div>
+                <div class="numbers">8</div>
+                <div class="numbers">9</div>
+                <div class="numbers">10</div>
+                <div class="numbers">11</div>
+            </div>
+            <div class="numbers-row" id="green-row">
+                <div class="numbers">12</div>
+                <div class="numbers">11</div>
+                <div class="numbers">10</div>
+                <div class="numbers">9</div>
+                <div class="numbers">8</div>
+                <div class="numbers">7</div>
+                <div class="numbers">6</div>
+                <div class="numbers">5</div>
+                <div class="numbers">4</div>
+                <div class="numbers">3</div>
+            </div>
+            <div class="numbers-row" id="blue-row">
+                <div class="numbers">12</div>
+                <div class="numbers">11</div>
+                <div class="numbers">10</div>
+                <div class="numbers">9</div>
+                <div class="numbers">8</div>
+                <div class="numbers">7</div>
+                <div class="numbers">6</div>
+                <div class="numbers">5</div>
+                <div class="numbers">4</div>
+                <div class="numbers">3</div>
+            </div>
+            <div class="lockout-column">
+                <div id="red-lockout">
+                    <div class="numbers">12</div>
+                    <div class="lock">L</div>
+                </div>
+                <div id="yellow-lockout">
+                    <div class="numbers">12</div>
+                    <div class="lock">L</div>
+                </div>
+                <div id="green-lockout">
+                    <div class="numbers">2</div>
+                    <div class="lock">L</div>
+                </div>
+                <div id="blue-lockout">
+                    <div class="numbers">2</div>
+                    <div class="lock">L</div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="scoring-and-penalty-row">
