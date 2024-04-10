@@ -3,4 +3,19 @@
     margin: 0;
 }
 
+/* body tag used for temp visual reference */
+body {
+    background-color: gray;
+}
 
+/* Start of actual code */
+#board {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+    background-color: white;
+}
