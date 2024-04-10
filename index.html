@@ -5,9 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/app.js"></script>
-    <title>Document</title>
+    <title>Qwixx</title>
 </head>
 <body>
-    
+    <div id="board">
+        <div class="numbers-row" id="red-row">
+            <div class="numbers">2</div>
+            <div class="numbers">3</div>
+            <div class="numbers">4</div>
+            <div class="numbers">5</div>
+            <div class="numbers">6</div>
+            <div class="numbers">7</div>
+            <div class="numbers">8</div>
+            <div class="numbers">9</div>
+            <div class="numbers">10</div>
+            <div class="numbers">11</div>
+            <div class="numbers">12</div>
+            <div class="lock">L</div>
+        </div>
+        <div class="numbers-row" id="yellow-row">
+            <div class="numbers">2</div>
+            <div class="numbers">3</div>
+            <div class="numbers">4</div>
+            <div class="numbers">5</div>
+            <div class="numbers">6</div>
+            <div class="numbers">7</div>
+            <div class="numbers">8</div>
+            <div class="numbers">9</div>
+            <div class="numbers">10</div>
+            <div class="numbers">11</div>
+            <div class="numbers">12</div>
+            <div class="lock">L</div>
+        </div>
+        <div class="numbers-row" id="green-row">
+            <div class="numbers">12</div>
+            <div class="numbers">11</div>
+            <div class="numbers">10</div>
+            <div class="numbers">9</div>
+            <div class="numbers">8</div>
+            <div class="numbers">7</div>
+            <div class="numbers">6</div>
+            <div class="numbers">5</div>
+            <div class="numbers">4</div>
+            <div class="numbers">3</div>
+            <div class="numbers">2</div>
+            <div class="lock">L</div>
+        </div>
+        <div class="numbers-row" id="blue-row">
+            <div class="numbers">12</div>
+            <div class="numbers">11</div>
+            <div class="numbers">10</div>
+            <div class="numbers">9</div>
+            <div class="numbers">8</div>
+            <div class="numbers">7</div>
+            <div class="numbers">6</div>
+            <div class="numbers">5</div>
+            <div class="numbers">4</div>
+            <div class="numbers">3</div>
+            <div class="numbers">2</div>
+            <div class="lock">L</div>
+        </div>
+    </div>
+    <div id="scoring-and-penalty-row">
+        <div class="scoring">
+            <div class="top-scoring">X</div>
+            <div class="bottom-scoring">points</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">1x</div>
+            <div class="bottom-scoring">1</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">2x</div>
+            <div class="bottom-scoring">3</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">3x</div>
+            <div class="bottom-scoring">6</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">4x</div>
+            <div class="bottom-scoring">10</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">5x</div>
+            <div class="bottom-scoring">15</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">6x</div>
+            <div class="bottom-scoring">21</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">7x</div>
+            <div class="bottom-scoring">28</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">8x</div>
+            <div class="bottom-scoring">36</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">9x</div>
+            <div class="bottom-scoring">45</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">10x</div>
+            <div class="bottom-scoring">55</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">11x</div>
+            <div class="bottom-scoring">66</div>
+        </div>
+        <div class="scoring">
+            <div class="top-scoring">12x</div>
+            <div class="bottom-scoring">78</div>
+        </div>
+        <div id="penalties">
+            <div id="die-icon"></div>
+            <div id="penalty-points-text">= -5</div>
+        </div>
+        <div id="penalty-row">
+            <input type="checkbox" class="penalty-box">
+            <input type="checkbox" class="penalty-box">
+            <input type="checkbox" class="penalty-box">
+            <input type="checkbox" class="penalty-box">
+        </div>
+    </div>
+    <div id="score-total-row">
+        <div class="score-total-text" id="totals-text">totals</div>
+        <div class="score-total-box" id="red-total-box"></div>
+        <div class="score-total-text">+</div>
+        <div class="score-total-box" id="yellow-total-box"></div>
+        <div class="score-total-text">+</div>
+        <div class="score-total-box" id="green-total-box"></div>
+        <div class="score-total-text">+</div>
+        <div class="score-total-box" id="blue-total-box"></div>
+        <div class="score-total-text">-</div>
+        <div class="score-total-box" id="penalty-total-box"></div>
+        <div class="score-total-text">=</div>
+        <div class="score-total-box" id="total-box"></div>
+    </div>
 </body>
 </html>
