@@ -1,19 +1,20 @@
-import { redElements, yellowElements, greenElements, blueElements } from "./elements.js"
+import * as elements from "./elements.js"
 
-const redScoreElement = document.querySelector('#red-total-box');
-const yellowScoreElement = document.querySelector('#yellow-total-box')
-const greenScoreElement = document.querySelector('#green-total-box');
-const blueScoreElement = document.querySelector('#blue-total-box');
-const penaltyScoreElement = document.querySelector('#penalty-total-box');
-const totalScoreElement = document.querySelector('#total-box');
-
+// Clears board to begin a new game
 const clearBoard = () => {
-    redScoreElement.innerHTML = 0;
-    yellowScoreElement.innerHTML = 0;
-    greenScoreElement.innerHTML = 0;
-    blueScoreElement.innerHTML = 0;
-    penaltyScoreElement.innerHTML = 0;
-    totalScoreElement.innerHTML = 0;
+    // Reset score values
+    elements.redScore.innerHTML = 0;
+    elements.yellowScore.innerHTML = 0;
+    elements.greenScore.innerHTML = 0;
+    elements.blueScore.innerHTML = 0;
+    elements.penaltyScore.innerHTML = 0;
+    elements.totalScore.innerHTML = 0;
+
+    // 'Lock' buttons disabled
+    for (let disableLock of elements.allDisableLock) {
+        disableLock.setAttribute('disabled', true);
+    }
 }
 
+// export functions for use in app
 export { clearBoard };

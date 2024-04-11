@@ -4,9 +4,6 @@
 }
 
 body {
-    /* for visual reference */
-    /* background-color: gray; */
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,6 +67,9 @@ body {
     padding: 0;
     background-color: white;
     opacity: .8;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .lock {

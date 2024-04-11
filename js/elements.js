@@ -1,48 +1,81 @@
 // Define objects to obtain button elements by color
 // Each object has "ascending" key for order reference
-let redElements = {
+let red = {
     ascending: true
 };
 
-let yellowElements = {
+let yellow = {
     ascending: true
 };
 
-let greenElements = {
+let green = {
     ascending: false
 };
 
-let blueElements = {
+let blue = {
     ascending: false
 };
 
 // Obtain red button elements
-const redRowElement = document.querySelector('.red');
-const redElementChildren = redRowElement.children;
-for (let element of redElementChildren) {
-    redElements[element.innerHTML] = element;
+const redRow = document.querySelector('.red');
+const redChildren = redRow.children;
+for (let element of redChildren) {
+    red[element.innerHTML] = element;
 }
 
 // Obtain yellow button elements
-const yellowRowElement = document.querySelector('.yellow');
-const yellowElementChildren = yellowRowElement.children;
-for (let element of yellowElementChildren) {
-    yellowElements[element.innerHTML] = element;
+const yellowRow = document.querySelector('.yellow');
+const yellowChildren = yellowRow.children;
+for (let element of yellowChildren) {
+    yellow[element.innerHTML] = element;
 }
 
 // Obtain green button elements
-const greenRowElement = document.querySelector('.green');
-const greenElementChildren = greenRowElement.children;
-for (let element of greenElementChildren) {
-    greenElements[element.innerHTML] = element;
+const greenRow = document.querySelector('.green');
+const greenChildren = greenRow.children;
+for (let element of greenChildren) {
+    green[element.innerHTML] = element;
 }
 
 // Obtain blue button elements
-const blueRowElement = document.querySelector('.blue');
-const blueElementChildren = blueRowElement.children;
-for (let element of blueElementChildren) {
-    blueElements[element.innerHTML] = element;
+const blueRow = document.querySelector('.blue');
+const blueChildren = blueRow.children;
+for (let element of blueChildren) {
+    blue[element.innerHTML] = element;
 }
 
-// Exports all objects
-export { redElements, yellowElements, greenElements, blueElements };
+// Score box elements
+const redScore = document.querySelector('#red-total-box');
+const yellowScore = document.querySelector('#yellow-total-box')
+const greenScore = document.querySelector('#green-total-box');
+const blueScore = document.querySelector('#blue-total-box');
+const penaltyScore = document.querySelector('#penalty-total-box');
+const totalScore = document.querySelector('#total-box');
+
+// "lock" elements, to be disable at start
+const allDisableLock = document.querySelectorAll('.disable-lock');
+
+// Specify "lock" elements by color
+const redDisableLock = [];
+const yellowDisableLock = [];
+const greenDisableLock = [];
+const blueDisableLock = [];
+
+for (let i = 0; i < 8; i++) {
+    if (i === 0 || i === 1) {
+        redDisableLock.push(allDisableLock[i]);
+    } else if (i === 2 || i === 3) {
+        yellowDisableLock.push(allDisableLock[i]);
+    } else if (i === 4 || i === 5) {
+        greenDisableLock.push(allDisableLock[i]);
+    } else if (i === 6 || i === 7) {
+        blueDisableLock.push(allDisableLock[i]);
+    }
+}
+
+// Exports all objects/elements
+export {
+    red, yellow, green, blue, redScore, yellowScore,
+    greenScore, blueScore, penaltyScore, totalScore,
+    allDisableLock, redDisableLock, yellowDisableLock,
+    greenDisableLock, blueDisableLock };
