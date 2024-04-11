@@ -13,21 +13,13 @@ if (gameState.start === true) {
 
 gameFunctions.rollDice();
 
-// Ref
+// Ref - log roll
+console.log(` ROLLLLLLLLLLL\n`, `white1: ${gameState.roll.white1}\n`, `white2: ${gameState.roll.white2}\n\n`, `red: ${gameState.roll.red}\n`, `yellow: ${gameState.roll.yellow}\n`, `green: ${gameState.roll.green}\n`, `blue: ${gameState.roll.blue}`);
+
+// Ref - log pickable options
 console.dir(gameState.rollValues);
 
-
-
-// Ref
-console.log(` ROLLLLLLLLLLL\n`,
-            `white1: ${gameState.roll.white1}\n`,
-            `white2: ${gameState.roll.white2}\n\n`,
-            `red: ${gameState.roll.red}\n`,
-            `yellow: ${gameState.roll.yellow}\n`,
-            `green: ${gameState.roll.green}\n`,
-            `blue: ${gameState.roll.blue}`);
-
-
-
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Adds all listeners for buttons
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 addListeners();
