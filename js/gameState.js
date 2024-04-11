@@ -2,11 +2,30 @@
 let gameState = {
     start: true,
     gameOver: false,
+    playerChoice: '',
+    playerSelectionCount: {
+        red: 0,
+        yellow: 0,
+        green: 0,
+        blue: 0,
+        penalties: 0
+    },
+    colorStatus: {
+        lowestRed: 0,
+        lowestYellow: 0,
+        highestGreen: 13,
+        highestBlue: 13
+    },
+    whiteSelection: false,
+    combinationSelection: false,
     diceRolled: false,
-    playRed: true,
-    playYellow: true,
-    playGreen: true,
-    playBlue: true,
+    colorInPlay: {
+        count: 4,
+        red: true,
+        yellow: true,
+        green: true,
+        blue: true
+    },
     roll: {
         white1: 0,
         white2: 0,

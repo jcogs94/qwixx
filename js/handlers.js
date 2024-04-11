@@ -1,17 +1,30 @@
+import { gameState } from "./gameState.js";
+import { validateInput } from "./gameFunctions.js";
+
+// Each of the handlers below update the 'playerChoice' and call for validation
+// if the dice have been rolled
 const red = (redButtonPressed) => {
-    console.log(`Red ${redButtonPressed} pressed`);
+    gameState.playerChoice = `red ${redButtonPressed}`;
+    if (gameState.diceRolled)
+        validateInput();
 }
 
 const yellow = (yellowButtonPressed) => {
-    console.log(`Yellow ${yellowButtonPressed} pressed`);
+    gameState.playerChoice = `yellow ${yellowButtonPressed}`;
+    if (gameState.diceRolled)
+        validateInput();
 }
 
 const green = (greenButtonPressed) => {
-    console.log(`Green ${greenButtonPressed} pressed`);
+    gameState.playerChoice = `green ${greenButtonPressed}`;
+    if (gameState.diceRolled)
+        validateInput();
 }
 
 const blue = (blueButtonPressed) => {
-    console.log(`Blue ${blueButtonPressed} pressed`);
+    gameState.playerChoice = `blue ${blueButtonPressed}`;
+    if (gameState.diceRolled)
+        validateInput();
 }
 
 export { red, yellow, green, blue };
