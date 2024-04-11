@@ -1,4 +1,5 @@
 import * as elements from "./elements.js"
+import { gameState } from "./app.js";
 
 // Clears board to begin a new game
 const clearBoard = () => {
@@ -14,18 +15,37 @@ const clearBoard = () => {
     for (let disableLock of elements.allDisableLock) {
         disableLock.setAttribute('disabled', true);
     }
+
+    // Reset diceRolled
+    gameState.diceRolled = false;
 }
 
 // Used for rolling dice, obtained from url below:
 // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+const rollDie = () => {
+    return Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 }
 
-const rollDice = (color) => {
-    color.die = getRandomInt(1, 6);
+// Rolls white dice and dice by color if still in play
+const rollDice = () => {
+    gameState.roll.white1 = rollDie();
+    gameState.roll.white2 = rollDie();
+
+    if (gameState.playRed) {
+        gameState.roll.red = rollDie();
+    }
+    if (gameState.playYellow) {
+        gameState.roll.yellow = rollDie();
+    }
+    if (gameState.playGreen) {
+        gameState.roll.green = rollDie();
+    }
+    if (gameState.playBlue) {
+        gameState.roll.blue = rollDie();
+    }
+
+    // Updates game state
+    gameState.diceRolled = true;
 }
 
 // export functions for use in app
