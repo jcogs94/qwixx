@@ -1,8 +1,20 @@
-// Define empty objects to obtain button elements by color
-let redElements = {};
-let yellowElements = {};
-let greenElements = {};
-let blueElements = {};
+// Define objects to obtain button elements by color
+// Each object has "ascending" key for order reference
+let redElements = {
+    ascending: true
+};
+
+let yellowElements = {
+    ascending: true
+};
+
+let greenElements = {
+    ascending: false
+};
+
+let blueElements = {
+    ascending: false
+};
 
 // Obtain red button elements
 const redRowElement = document.querySelector('.red');

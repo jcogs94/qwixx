@@ -116,14 +116,18 @@ body {
 
 #score-total-row > * {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px 20px;
     padding: 0;
-    text-align: center;
 }
 
 .score-total-box {
     width: 100px;
     height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 #red-total-box {
