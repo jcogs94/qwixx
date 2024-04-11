@@ -1,4 +1,4 @@
-import * as elements from "./elements.js"
+import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 
 // Clears board to begin a new game

@@ -3,6 +3,7 @@
 import * as elements from "./elements.js";
 import * as gameFunctions from "./gameFunctions.js";
 import { gameState } from "./gameState.js";
+import { addListeners } from "./listeners.js";
 
 // Initializes the start of a new game
 if (gameState.start === true) {
@@ -11,4 +12,9 @@ if (gameState.start === true) {
 }
 
 gameFunctions.rollDice();
-console.log(gameState);
+console.dir(gameState);
+
+addListeners();
+
+
+
