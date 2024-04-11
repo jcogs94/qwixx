@@ -154,3 +154,7 @@ body {
     width: 180px;
     background-color: white;
 }
+
+button:disabled {
+    cursor: not-allowed;
+}
