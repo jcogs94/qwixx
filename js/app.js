@@ -1,4 +1,4 @@
-// Obtained from following link:
+// Obtained from following url:
 // https://www.scaler.com/topics/javascript/import-js-file-in-js/
 import * as elements from "./elements.js";
 import * as gameFunctions from "./gameFunctions.js";
@@ -13,3 +13,6 @@ if (gameState.start === true) {
     gameFunctions.clearBoard();
     gameState.start = false;
 }
+
+gameFunctions.rollDice(elements.red);
+console.log(elements.red);

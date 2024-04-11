@@ -16,5 +16,17 @@ const clearBoard = () => {
     }
 }
 
+// Used for rolling dice, obtained from url below:
+// https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const rollDice = (color) => {
+    color.die = getRandomInt(1, 6);
+}
+
 // export functions for use in app
-export { clearBoard };
+export { clearBoard, rollDice };
