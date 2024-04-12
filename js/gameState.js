@@ -3,6 +3,8 @@ let gameState = {
     start: true,
     gameOver: false,
     playerChoice: '',
+    whiteSelection: false,
+    combinationSelection: false,
     scores: {
         red: 0,
         yellow: 0,
@@ -38,8 +40,6 @@ let gameState = {
         highestGreen: 13,
         highestBlue: 13
     },
-    whiteSelection: false,
-    combinationSelection: false,
     diceRolled: false,
     colorInPlay: {
         count: 4,

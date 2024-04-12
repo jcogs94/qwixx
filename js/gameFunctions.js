@@ -130,6 +130,7 @@ const crossOutInput = (color, num, lock) => {
     // Ref - button selection
     console.log(`Selection: ${color} ${num}\nLock: ${lock}`);
 
+
     // Updates 'highest' or 'lowest' to implement the rule that
     // the player can't mark things to the left of any of thier
     // previous marks
@@ -242,17 +243,17 @@ const validateInput = () => {
     // Checks if color is valid (from utils function)
     let colorValid = utils.colorValid(color);
 
+    // If the color is valid and 'L' or '12' have been pressed,
+    // makes sure the 'L' press num equal to '12'
+    if (colorValid && lock) {
+        num = 12;
+    }
+
     // Checks if the number in that color is valid
     let numValid = utils.numValid(color, num);
 
     // Checks if the dice rolled can be added together to make that number
     let additionValid = utils.additionValid(color, num);
-
-    // Updates values to true if the lock button pressed
-    if (colorValid && lock) {
-        numValid = true;
-        additionValid = true;
-    }
 
     // Makes the input valid if all three conditions are met
     if (colorValid && numValid && additionValid) {
@@ -260,10 +261,22 @@ const validateInput = () => {
     }
 
     // Continues game if input valid, else message displayed
-    if (valid)
-        crossOutInput(color, num, lock);
-    else
-        {} // Placeholder for displaying error message
+    if (valid) {
+        // Turn validation before continuing, else message displayed
+        if (gameState.diceRolled) {
+            if(gameState.combinationSelection) {
+                gameState.diceRolled = false;
+            }
+
+            crossOutInput(color, num, lock);
+        } else {
+            console.log('Turn over, no more selections.');
+        }
+    }
+    else {
+        // Placeholder for displaying error message
+        console.log('Invalid selection.');
+    }
 }
 
 // Updates possible values choosen by user
@@ -320,8 +333,8 @@ const rollDice = () => {
 
     // Updates game state
     gameState.diceRolled = true;
-    gameState.whiteSelection = true;
-    gameState.combinationSelection = true;
+    gameState.whiteSelection = false;
+    gameState.combinationSelection = false;
 }
 
 // export functions for use in app

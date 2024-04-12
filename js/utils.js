@@ -31,40 +31,49 @@ const numValid = (inputColor, inputNum) => {
         return false;
 }
 
-// Validate to ensure that dice rolled can add together to equal the box selected
+// Validate to ensure that dice rolled can legally add together to equal the box selected
 const additionValid = (inputColor, inputNum) => {
-    let valid = false;
+    let combinationValid = false;
     
     // Valid if the two white dice added together equal this amount
-    if (inputNum === gameState.rollValues.whiteTotal) {
-        valid = true;
+    if (inputNum === gameState.rollValues.whiteTotal && gameState.whiteSelection === false) {
+        gameState.whiteSelection = true;
+        return true;
     }
 
     // Valid if the addition of the colored die and one of the white die equals selection
     switch (inputColor) {
         case 'red':
             if (inputNum === gameState.rollValues.redWhite1 || inputNum === gameState.rollValues.redWhite2) {
-                valid = true;
+                combinationValid = true;
             }
             break;
         case 'yellow':
             if (inputNum === gameState.rollValues.yellowWhite1 || inputNum === gameState.rollValues.yellowWhite2) {
-                valid = true;
+                combinationValid = true;
             }
             break;
         case 'green':
             if (inputNum === gameState.rollValues.greenWhite1 || inputNum === gameState.rollValues.greenWhite2) {
-                valid = true;
+                combinationValid = true;
             }
             break;
         case 'blue':
             if (inputNum === gameState.rollValues.blueWhite1 || inputNum === gameState.rollValues.blueWhite2) {
-                valid = true;
+                combinationValid = true;
             }
             break;
     }
-    
-    return valid;
+
+    // If the addition of one colored die and one white die equals
+    // the player's selection, gameState updated as that part of
+    // their turn being completed
+    if (combinationValid && gameState.combinationSelection === false) {
+        gameState.combinationSelection = true;
+        return true;
+    } else {
+        return false;
+    }
 }
 
 export { colorValid, numValid, additionValid };
