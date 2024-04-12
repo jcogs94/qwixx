@@ -17,6 +17,12 @@ const clearBoard = () => {
         disableLock.setAttribute('disabled', true);
     }
 
+    // Reset 'hightest' and 'lowest' values
+    gameState.colorStatus.lowestRed = 0;
+    gameState.colorStatus.lowestYellow = 0;
+    gameState.colorStatus.highestGreen = 13;
+    gameState.colorStatus.highestBlue = 13;
+
     // Reset diceRolled
     gameState.diceRolled = false;
 }
