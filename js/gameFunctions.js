@@ -2,11 +2,21 @@ import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as utils from "./utils.js"
 
-// Variable for keys of gameState.scores, to be
-// used in multiple functions
-const scoresArr = Object.keys(gameState.scores);
+// Loops through score values and displays them on the dom
+const updateScoreBoard = () => {
+    // Defines array to reference the keys for scores
+    let scoresArr = Object.keys(gameState.scores);
 
-const updateScores = () => {
+    // Resets values if game start, else updates score
+    if (gameState.start) {
+        scoresArr.forEach( (scoreType) => {
+            gameState.scores[scoreType] = 0;
+        });
+    } else {
+
+    }
+    
+    // Displays updated scores on the dom
     scoresArr.forEach( (scoreType) => {
         elements.scores[scoreType].innerText = `${gameState.scores[scoreType]}`;
     });
@@ -14,15 +24,13 @@ const updateScores = () => {
 
 // Clears board to begin a new game
 const clearBoard = () => {
-    // Reset score values    
-    scoresArr.forEach( (scoreType) => {
-        gameState.scores[scoreType] = 0;
-    });
+    // Used for reference in how functions will clear board (updateScoreBoard())
+    gameState.start = true;
     
-    // Display new reset scores
-    updateScores();
+    // Resets the scores and displays new reset scores
+    updateScoreBoard();
 
-    // 'Lock' buttons disabled
+    // 'Lock' buttons disabled at start
     for (let disableLock of elements.allDisableLock) {
         disableLock.setAttribute('disabled', true);
     }
@@ -33,8 +41,9 @@ const clearBoard = () => {
     gameState.colorStatus.highestGreen = 13;
     gameState.colorStatus.highestBlue = 13;
 
-    // Reset diceRolled
+    // Reset diceRolled and gameState.start
     gameState.diceRolled = false;
+    !gameState.start;
 }
 
 // Disables buttons to the left of the user selection to have visual reference
@@ -95,6 +104,12 @@ const crossOutInput = (color, num, lock) => {
 
     // Updates the number of boxes selected for that color
     gameState.playerSelectionCount[color]++;
+
+    // Update gameState scores based on new selection
+    updateScores();
+
+    // Update score board
+    updateScoreBoard();
 
     // Create 'X' element to go on top of selected box
     const boxMark = document.createElement('h1');
