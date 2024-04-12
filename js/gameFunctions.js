@@ -27,11 +27,40 @@ const clearBoard = () => {
     gameState.diceRolled = false;
 }
 
+// Disables buttons to the left of the user selection to have visual reference
+// to the player that those moves are invalid
+const disableToLeft = (color) => {
+    const colorRowElements = Object.values(elements[color]);
+    colorRowElements.forEach((element) => {
+        // Determines the color and disables buttons to the left of the highest selection
+        switch (color) {
+            case 'red':
+                if (parseInt(element.innerText) <= gameState.colorStatus.lowestRed) {
+                    element.setAttribute('disabled', true);
+                }
+                break;
+            case 'yellow':
+                if (parseInt(element.innerText) <= gameState.colorStatus.lowestYellow) {
+                    element.setAttribute('disabled', true);
+                }
+                break;
+            case 'green':
+                if (parseInt(element.innerText) >= gameState.colorStatus.highestGreen) {
+                    element.setAttribute('disabled', true);
+                }
+                break;
+            case 'blue':
+                if (parseInt(element.innerText) >= gameState.colorStatus.highestBlue) {
+                    element.setAttribute('disabled', true);
+                }
+        }
+    }); 
+}
+
 // Crosses out the selection, updates visuals
 const crossOutInput = (color, num, lock) => {
     // Ref
     console.log(`Color: ${color}\nNum: ${num}\nLock: ${lock}`);
-    console.dir(elements[color][num]);
 
     // Updates 'highest' or 'lowest' to implement the rule that
     // the player can't mark things to the left of any of thier
@@ -50,6 +79,9 @@ const crossOutInput = (color, num, lock) => {
             gameState.colorStatus.highestBlue = num;
     }
 
+    // Calls disableToLeft() to disable invalid buttons based
+    // on prev rule
+    disableToLeft(color);
 
     // Create 'X' element to go on top of selected box
     const boxMark = document.createElement('h1');
