@@ -33,6 +33,25 @@ const updateScoreBoard = () => {
     });
 }
 
+// Clears disabled buttons and disables lock buttons
+const resetDisabledButtons = () => {
+    // Variable and array to be used in the loop
+    let buttonKey;
+    let color = ['red', 'yellow', 'green', 'blue']
+    // Loops through each color[] and uses its key to remove 'disabled' attributes of all buttons
+    for (let i = 0; i < 4; i++) {
+        buttonKey = Object.keys(elements[color[i]]);
+        buttonKey.forEach( (key) => {
+            elements[color[i]][key].removeAttribute('disabled');
+        })
+    }
+    
+    // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
+    for (let disableLock of elements.lockButtons.all) {
+        disableLock.setAttribute('disabled', true);
+    }
+}
+
 // Clears board to begin a new game
 const newGame = () => {
     // Used for reference in how functions will clear board (updateScoreBoard())
@@ -41,10 +60,8 @@ const newGame = () => {
     // Resets the scores and displays new reset scores
     updateScoreBoard();
 
-    // 'Lock' buttons disabled at start
-    for (let disableLock of elements.lockButtons.all) {
-        disableLock.setAttribute('disabled', true);
-    }
+    // Reset disabled buttons to false, disable lock buttons
+    resetDisabledButtons();
 
     // Reset 'hightest' and 'lowest' values
     gameState.colorStatus.lowestRed = 0;
