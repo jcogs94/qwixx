@@ -48,6 +48,12 @@ let gameState = {
         green: true,
         blue: true
     },
+    colorLockAvailable: {
+        red: false,
+        yellow: false,
+        green: false,
+        blue: false
+    },
     roll: {
         white1: 0,
         white2: 0,

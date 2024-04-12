@@ -42,7 +42,7 @@ const newGame = () => {
     updateScoreBoard();
 
     // 'Lock' buttons disabled at start
-    for (let disableLock of elements.allDisableLock) {
+    for (let disableLock of elements.lockButtons.all) {
         disableLock.setAttribute('disabled', true);
     }
 
@@ -87,6 +87,13 @@ const disableToLeft = (color) => {
     }); 
 }
 
+const lockCheck = (color, num, lock) => {
+    if (gameState.playerSelectionCount[color] >= 5 && gameState.colorLockAvailable[color] === false) {
+        
+        gameState.colorLockAvailable[color] = true;
+    }
+}
+
 // Crosses out the selection, updates visuals
 const crossOutInput = (color, num, lock) => {
     // Ref - button selection
@@ -126,6 +133,8 @@ const crossOutInput = (color, num, lock) => {
 
     // Append new 'X' element to the box selected
     elements[color][num].appendChild(boxMark);
+
+    lockCheck(color, num, lock);
 }
 
 // validates the user's input as a valid play

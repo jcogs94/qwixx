@@ -42,24 +42,25 @@ const scores = {
     total: document.querySelector('#total-box')
 }
 
-// "lock" elements, to be disable at start
-const allDisableLock = document.querySelectorAll('.disable-lock');
+// Object to contain all lock button elements
+const lockButtons = {
+    all: document.querySelectorAll('.disable-lock'),
+    red: [],
+    yellow: [],
+    green: [],
+    blue: []
+};
 
-// Specify "lock" elements by color
-const redDisableLock = [];
-const yellowDisableLock = [];
-const greenDisableLock = [];
-const blueDisableLock = [];
-
+// Separates out the lock button elements by color
 for (let i = 0; i < 8; i++) {
     if (i === 0 || i === 1) {
-        redDisableLock.push(allDisableLock[i]);
+        lockButtons.red.push(lockButtons.all[i]);
     } else if (i === 2 || i === 3) {
-        yellowDisableLock.push(allDisableLock[i]);
+        lockButtons.yellow.push(lockButtons.all[i]);
     } else if (i === 4 || i === 5) {
-        greenDisableLock.push(allDisableLock[i]);
+        lockButtons.green.push(lockButtons.all[i]);
     } else if (i === 6 || i === 7) {
-        blueDisableLock.push(allDisableLock[i]);
+        lockButtons.blue.push(lockButtons.all[i]);
     }
 }
 
@@ -69,6 +70,4 @@ const newGameButton = document.querySelector('#new-game-button');
 
 // Exports all objects/elements
 export {
-    red, yellow, green, blue, scores, allDisableLock,
-    redDisableLock, yellowDisableLock, greenDisableLock,
-    blueDisableLock, rollButton, newGameButton };
+    red, yellow, green, blue, scores, lockButtons, rollButton, newGameButton };
