@@ -6,26 +6,38 @@ import * as elements from "./elements.js";
 // if the dice have been rolled
 const red = (redButtonPressed) => {
     gameState.playerChoice = `red ${redButtonPressed}`;
-    if (gameState.diceRolled)
+    if (gameState.diceRolled) {
         gameFunctions.validateInput();
+    } else {
+        console.log('Turn over, no more selections.');
+    }
 }
 
 const yellow = (yellowButtonPressed) => {
     gameState.playerChoice = `yellow ${yellowButtonPressed}`;
-    if (gameState.diceRolled)
+    if (gameState.diceRolled) {
         gameFunctions.validateInput();
+    } else {
+        console.log('Turn over, no more selections.');
+    }
 }
 
 const green = (greenButtonPressed) => {
     gameState.playerChoice = `green ${greenButtonPressed}`;
-    if (gameState.diceRolled)
+    if (gameState.diceRolled) {
         gameFunctions.validateInput();
+    } else {
+        console.log('Turn over, no more selections.');
+    }
 }
 
 const blue = (blueButtonPressed) => {
     gameState.playerChoice = `blue ${blueButtonPressed}`;
-    if (gameState.diceRolled)
+    if (gameState.diceRolled) {
         gameFunctions.validateInput();
+    } else {
+        console.log('Turn over, no more selections.');
+    }
 }
 
 const rollButton = () => {
@@ -43,21 +55,25 @@ const newGameButton = () => {
 }
 
 const penaltyBox = () => {
-    // Disables the checked box
-    for (let i = 1; i < 5; i++) {
-        if (elements.penaltyBox[i].checked === true) {
-            elements.penaltyBox[i].setAttribute('disabled', true);
+    if (gameState.diceRolled) {
+        // Disables the checked box
+        for (let i = 1; i < 5; i++) {
+            if (elements.penaltyBox[i].checked === true) {
+                elements.penaltyBox[i].setAttribute('disabled', true);
+            }
         }
-    }
-
-    // Adjusts penalty count in gameState
-    gameState.playerSelectionCount.penalties++;
-
-    gameFunctions.updateScoreBoard();
-
-    // Game over if all boxes checked
-    if (gameState.playerSelectionCount.penalties === 4) {
-        gameFunctions.gameOver();
+    
+        // Adjusts penalty count in gameState
+        gameState.playerSelectionCount.penalties++;
+    
+        gameFunctions.updateScoreBoard();
+    
+        // Game over if all boxes checked
+        if (gameState.playerSelectionCount.penalties === 4) {
+            gameFunctions.gameOver();
+        }
+    } else {
+        console.log('Dice must first be rolled!');
     }
 }
 

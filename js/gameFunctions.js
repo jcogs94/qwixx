@@ -2,6 +2,30 @@ import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as utils from "./utils.js"
 
+const gameOver = () => {
+    console.log('Game Over!!');
+
+    let interactiveElements = ['red', 'yellow', 'green', 'blue', 'penaltyBox', 'rollButton'];
+    interactiveElements.forEach( (element) => {
+        switch (element) {
+            case ('penaltyBox'):
+                for (let i = 1; i < 5; i++) {
+                    elements[element][`${i}`].setAttribute('disabled', true);
+                }
+                break;
+            case ('rollButton'):
+                elements[element].setAttribute('disabled', true);
+                break;
+            default:
+                let colorKey = Object.keys(elements[element]);
+                colorKey.forEach( (key) => {
+                    elements[element][key].setAttribute('disabled', true);
+                });
+                break;
+        }
+    })
+}
+
 // Loops through score values and displays them on the dom
 const updateScoreBoard = () => {
     // Defines array to reference the keys for scores
@@ -224,6 +248,10 @@ const crossOutInput = (color, num, lock) => {
 
     // Update scores and score board
     updateScoreBoard();
+
+    if (gameState.colorInPlay.count === 2) {
+        gameOver();
+    }
 }
 
 // validates the user's input as a valid play
@@ -282,8 +310,6 @@ const validateInput = () => {
             }
 
             crossOutInput(color, num, lock);
-        } else {
-            console.log('Turn over, no more selections.');
         }
     }
     else {
@@ -360,10 +386,6 @@ const rollDice = () => {
     } else {
         console.log("Dice can't be rolled right now.");
     }
-}
-
-const gameOver = () => {
-    console.log('Game Over!!');
 }
 
 // export functions for use in app
