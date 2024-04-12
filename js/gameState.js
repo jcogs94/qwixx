@@ -1,7 +1,6 @@
 // Object to reference game state
 let gameState = {
     start: true,
-    gameOver: false,
     playerChoice: '',
     whiteSelection: false,
     combinationSelection: false,

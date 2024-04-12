@@ -68,6 +68,15 @@ for (let i = 0; i < 8; i++) {
 const rollButton = document.querySelector('#roll-button');
 const newGameButton = document.querySelector('#new-game-button');
 
+// Penalty boxes
+const penaltyBox = {};
+const allPenaltyElements = document.querySelectorAll('.penalty-box');
+for (let i = 0; i < 4; i++) {
+    let key = i + 1;
+    penaltyBox[key] = allPenaltyElements[i];
+}
+
 // Exports all objects/elements
 export {
-    red, yellow, green, blue, scores, lockButtons, rollButton, newGameButton };
+    red, yellow, green, blue, scores, lockButtons,
+    rollButton, newGameButton, penaltyBox };

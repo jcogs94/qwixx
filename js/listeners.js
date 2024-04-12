@@ -38,7 +38,12 @@ const addListeners = () => {
 
     // Listeners for game flow control
     elements.rollButton.addEventListener('click', handler.rollButton);
-    elements.newGameButton.addEventListener('click', handler.newGameButton)
+    elements.newGameButton.addEventListener('click', handler.newGameButton);
+
+    // Listener for penalty checks
+    for (let i = 1; i < 5; i++) {
+        elements.penaltyBox[i].addEventListener('change', handler.penaltyBox);
+    }
 }
 
 export { addListeners };

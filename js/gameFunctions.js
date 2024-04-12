@@ -19,7 +19,12 @@ const updateScoreBoard = () => {
         marksArr.forEach( (countType) => {
             // If statetment makes sure that the score value is not at default 0
             if (gameState.playerSelectionCount[countType] !== 0) {
-                gameState.scores[countType] = gameState.pointsRef[gameState.playerSelectionCount[countType]];
+                // If penalties, score = count * 5, else uses pointsRef obj to calculate score per color
+                if (countType === 'penalties') {
+                    gameState.scores[countType] = gameState.playerSelectionCount[countType] * 5;
+                } else {
+                    gameState.scores[countType] = gameState.pointsRef[gameState.playerSelectionCount[countType]];
+                }
             }
         })
 
@@ -48,6 +53,12 @@ const resetDisabledButtons = () => {
 
     // Enables roll button
     elements.rollButton.removeAttribute('disabled');
+
+    // Resets penalty boxes
+    for (let i = 1; i < 5; i++) {
+        elements.penaltyBox[i].checked = false;
+        elements.penaltyBox[i].removeAttribute('disabled');
+    }
     
     // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
     for (let disableLock of elements.lockButtons.all) {
@@ -351,5 +362,9 @@ const rollDice = () => {
     }
 }
 
+const gameOver = () => {
+    console.log('Game Over!!');
+}
+
 // export functions for use in app
-export { newGame, rollDice, validateInput };
+export { newGame, rollDice, validateInput, updateScoreBoard, gameOver };
