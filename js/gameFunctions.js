@@ -27,11 +27,30 @@ const crossOutInput = (color, num, lock) => {
     console.log(`Color: ${color}\nNum: ${num}\nLock: ${lock}`);
     console.dir(elements[color][num]);
 
+    // Updates 'highest' or 'lowest' to implement the rule that
+    // the player can't mark things to the left of any of thier
+    // previous marks
+    switch (color) {
+        case 'red':
+            gameState.colorStatus.lowestRed = num;
+            break;
+        case 'yellow':
+            gameState.colorStatus.lowestYellow = num;
+            break;
+        case 'green':
+            gameState.colorStatus.highestGreen = num;
+            break;
+        case 'blue':
+            gameState.colorStatus.highestBlue = num;
+    }
+
+
     // Create 'X' element to go on top of selected box
     const boxMark = document.createElement('h1');
     boxMark.setAttribute('class', 'box-mark');
     boxMark.innerText = 'X';
 
+    // Append new 'X' element to the box selected
     elements[color][num].appendChild(boxMark);
 }
 
