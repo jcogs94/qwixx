@@ -2,15 +2,25 @@ import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as utils from "./utils.js"
 
+// Variable for keys of gameState.scores, to be
+// used in multiple functions
+const scoresArr = Object.keys(gameState.scores);
+
+const updateScores = () => {
+    scoresArr.forEach( (scoreType) => {
+        elements.scores[scoreType].innerText = `${gameState.scores[scoreType]}`;
+    });
+}
+
 // Clears board to begin a new game
 const clearBoard = () => {
-    // Reset score values
-    elements.scores.red.innerHTML = 0;
-    elements.scores.yellow.innerHTML = 0;
-    elements.scores.green.innerHTML = 0;
-    elements.scores.blue.innerHTML = 0;
-    elements.scores.penalty.innerHTML = 0;
-    elements.scores.total.innerHTML = 0;
+    // Reset score values    
+    scoresArr.forEach( (scoreType) => {
+        gameState.scores[scoreType] = 0;
+    });
+    
+    // Display new reset scores
+    updateScores();
 
     // 'Lock' buttons disabled
     for (let disableLock of elements.allDisableLock) {

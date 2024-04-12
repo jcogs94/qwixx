@@ -38,7 +38,7 @@ const scores = {
     yellow: document.querySelector('#yellow-total-box'),
     green: document.querySelector('#green-total-box'),
     blue: document.querySelector('#blue-total-box'),
-    penalty: document.querySelector('#penalty-total-box'),
+    penalties: document.querySelector('#penalty-total-box'),
     total: document.querySelector('#total-box')
 }
 
