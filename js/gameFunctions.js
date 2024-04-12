@@ -116,34 +116,12 @@ const disableToLeft = (color) => {
 }
 
 // Checks if player has reached 5 of a color and unlocks last two boxes
-// Also handles lock button pushes
 const lockCheck = (color, num, lock) => {
     if (gameState.playerSelectionCount[color] >= 5 && gameState.colorLockAvailable[color] === false && gameState.colorInPlay[color]) {
         elements.lockButtons[color].forEach( (lock) => {
             lock.removeAttribute('disabled');
         });
         gameState.colorLockAvailable[color] = true;
-    }
-
-    if (lock) {
-        if (num === 0) {
-            // Player hit 'L' button
-    
-            // Mark 12
-        } else if (num === 12) {
-            // Player hit '12' button
-            
-            // Mark 'L'
-        }
-        
-        // Lock whole row
-        // ~~~~~~~ PLACEHOLDER ~~~~~~
-
-        // Update game state
-        gameState.playerSelectionCount[color]++;
-        gameState.colorInPlay[color] = false;
-        gameState.colorInPlay.count--;
-        gameState.colorLockAvailable[color] = false;
     }
 }
 
@@ -176,18 +154,65 @@ const crossOutInput = (color, num, lock) => {
     // Updates the number of boxes selected for that color
     gameState.playerSelectionCount[color]++;
 
-    // Update scores and score board
-    updateScoreBoard();
-
     // Create 'X' element to go on top of selected box
     const boxMark = document.createElement('h1');
     boxMark.setAttribute('class', 'box-mark');
     boxMark.innerText = 'X';
 
-    // Append new 'X' element to the box selected
-    elements[color][num].appendChild(boxMark);
+    // Adds 'X' to box selected, if 'L', referenced separately
+    if (num === 0) {
+        // Append new 'X' element to the 'L' selected
+        elements[color]['L'].appendChild(boxMark);
+    }
+    else {
+        // Append new 'X' element to the number selected
+        elements[color][num].appendChild(boxMark);
+    }
 
+    // Enables 'lock' buttons if more than five of that
+    // color have been selected
     lockCheck(color, num, lock);
+
+    // If a lock has been selected, also marks the adjacent
+    // box and adjusts the score
+    if (lock) {
+        // Copied from above for new 'X', can re-write?
+        const lockMark = document.createElement('h1');
+        lockMark.setAttribute('class', 'box-mark');
+        lockMark.innerText = 'X';
+        
+        // Marks adjacent box
+        if (num === 0) {
+            // Player hit 'L' button
+    
+            // Marks either 12 or 2, depending on color
+            if (color === 'red' || color === 'yellow') {
+                elements[color]['12'].appendChild(lockMark);
+            } else if (color === 'green' || color === 'blue') {
+                elements[color]['2'].appendChild(lockMark);
+            }
+        } else if (num === 12 || num === 2) {
+            // Player hit '12' button
+            
+            // Marks 'L'
+            elements[color]['L'].appendChild(lockMark);
+        }
+        
+        // Lock whole row
+        let colorRow = Object.keys(elements[color]);
+        colorRow.forEach( (key) => {
+            elements[color][key].setAttribute('disabled', true);
+        });
+
+        // Update game state
+        gameState.playerSelectionCount[color]++;        // For the 12 or 'L'
+        gameState.colorInPlay[color] = false;           // Takes color out of play
+        gameState.colorInPlay.count--;                  // Notes color taken out of play (for the end of game)
+        gameState.colorLockAvailable[color] = false;    // Ensures the lock buttons do not become enabled again
+    }
+
+    // Update scores and score board
+    updateScoreBoard();
 }
 
 // validates the user's input as a valid play
