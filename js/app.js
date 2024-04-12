@@ -5,25 +5,17 @@ import * as gameFunctions from "./gameFunctions.js";
 import { gameState } from "./gameState.js";
 import { addListeners } from "./listeners.js";
 
-// Initializes the start of a new game
-if (gameState.start === true) {
-    gameFunctions.clearBoard();
-    gameState.start = false;
-}
 
+// Temp start game
+gameFunctions.clearBoard();
 gameFunctions.rollDice();
+
 
 // Ref - log roll
 console.log(` ROLLLLLLLLLLL\n`, `white1: ${gameState.roll.white1}\n`, `white2: ${gameState.roll.white2}\n\n`, `red: ${gameState.roll.red}\n`, `yellow: ${gameState.roll.yellow}\n`, `green: ${gameState.roll.green}\n`, `blue: ${gameState.roll.blue}`);
 
 // Ref - log pickable options
 console.dir(gameState.rollValues);
-
-// // Ref - button objs
-// console.dir(elements.red);
-// console.dir(elements.yellow);
-// console.dir(elements.green);
-// console.dir(elements.blue);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Adds all listeners for buttons

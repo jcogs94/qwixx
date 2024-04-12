@@ -13,7 +13,18 @@ const updateScoreBoard = () => {
             gameState.scores[scoreType] = 0;
         });
     } else {
+        let marksArr = Object.keys(gameState.playerSelectionCount);
+        
+        // Loops through the colors, checks the score reference in gameState, and updates values
+        marksArr.forEach( (countType) => {
+            // If statetment makes sure that the score value is not at default 0
+            if (gameState.playerSelectionCount[countType] !== 0) {
+                gameState.scores[countType] = gameState.pointsRef[gameState.playerSelectionCount[countType]];
+            }
+        })
 
+        // Updates total
+        gameState.scores.total = gameState.scores.red + gameState.scores.yellow + gameState.scores.green + gameState.scores.blue - gameState.scores.penalties;
     }
     
     // Displays updated scores on the dom
@@ -43,7 +54,7 @@ const clearBoard = () => {
 
     // Reset diceRolled and gameState.start
     gameState.diceRolled = false;
-    !gameState.start;
+    gameState.start = !gameState.start;
 }
 
 // Disables buttons to the left of the user selection to have visual reference
@@ -105,10 +116,7 @@ const crossOutInput = (color, num, lock) => {
     // Updates the number of boxes selected for that color
     gameState.playerSelectionCount[color]++;
 
-    // Update gameState scores based on new selection
-    updateScores();
-
-    // Update score board
+    // Update scores and score board
     updateScoreBoard();
 
     // Create 'X' element to go on top of selected box
