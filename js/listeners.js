@@ -35,6 +35,10 @@ const addListeners = () => {
             handler.blue(element.innerHTML);
         });
     })
+
+    // Listeners for game flow control
+    elements.rollButton.addEventListener('click', handler.rollButton);
+    elements.newGameButton.addEventListener('click', handler.newGameButton)
 }
 
 export { addListeners };

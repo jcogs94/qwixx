@@ -8,7 +8,7 @@ import { addListeners } from "./listeners.js";
 
 // Temp start game
 gameFunctions.clearBoard();
-gameFunctions.rollDice();
+// gameFunctions.rollDice();
 
 
 // Ref - log roll

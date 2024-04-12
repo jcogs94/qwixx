@@ -7,6 +7,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 /* Start of actual code */
@@ -165,4 +166,10 @@ button:disabled {
     font-weight: 1;
     line-height: 100%;
     font-size: 4.5rem;
+}
+
+.control-buttons {
+    width: 200px;
+    height: 50px;
+    margin: 10px auto;
 }

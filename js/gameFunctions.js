@@ -90,7 +90,7 @@ const disableToLeft = (color) => {
 // Crosses out the selection, updates visuals
 const crossOutInput = (color, num, lock) => {
     // Ref
-    console.log(`Color: ${color}\nNum: ${num}\nLock: ${lock}`);
+    console.log(`Selection: ${color} ${num}\nLock: ${lock}`);
 
     // Updates 'highest' or 'lowest' to implement the rule that
     // the player can't mark things to the left of any of thier

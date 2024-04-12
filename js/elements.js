@@ -63,8 +63,12 @@ for (let i = 0; i < 8; i++) {
     }
 }
 
+// Button elements to control game flow
+const rollButton = document.querySelector('#roll-button');
+const newGameButton = document.querySelector('#new-game-button');
+
 // Exports all objects/elements
 export {
     red, yellow, green, blue, scores, allDisableLock,
     redDisableLock, yellowDisableLock, greenDisableLock,
-    blueDisableLock };
+    blueDisableLock, rollButton, newGameButton };
