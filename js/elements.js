@@ -33,12 +33,14 @@ for (let element of blueChildren) {
 }
 
 // Score box elements
-const redScore = document.querySelector('#red-total-box');
-const yellowScore = document.querySelector('#yellow-total-box')
-const greenScore = document.querySelector('#green-total-box');
-const blueScore = document.querySelector('#blue-total-box');
-const penaltyScore = document.querySelector('#penalty-total-box');
-const totalScore = document.querySelector('#total-box');
+const scores = {
+    red: document.querySelector('#red-total-box'),
+    yellow: document.querySelector('#yellow-total-box'),
+    green: document.querySelector('#green-total-box'),
+    blue: document.querySelector('#blue-total-box'),
+    penalty: document.querySelector('#penalty-total-box'),
+    total: document.querySelector('#total-box')
+}
 
 // "lock" elements, to be disable at start
 const allDisableLock = document.querySelectorAll('.disable-lock');
@@ -63,7 +65,6 @@ for (let i = 0; i < 8; i++) {
 
 // Exports all objects/elements
 export {
-    red, yellow, green, blue, redScore, yellowScore,
-    greenScore, blueScore, penaltyScore, totalScore,
-    allDisableLock, redDisableLock, yellowDisableLock,
-    greenDisableLock, blueDisableLock };
+    red, yellow, green, blue, scores, allDisableLock,
+    redDisableLock, yellowDisableLock, greenDisableLock,
+    blueDisableLock };

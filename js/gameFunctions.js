@@ -5,12 +5,12 @@ import * as utils from "./utils.js"
 // Clears board to begin a new game
 const clearBoard = () => {
     // Reset score values
-    elements.redScore.innerHTML = 0;
-    elements.yellowScore.innerHTML = 0;
-    elements.greenScore.innerHTML = 0;
-    elements.blueScore.innerHTML = 0;
-    elements.penaltyScore.innerHTML = 0;
-    elements.totalScore.innerHTML = 0;
+    elements.scores.red.innerHTML = 0;
+    elements.scores.yellow.innerHTML = 0;
+    elements.scores.green.innerHTML = 0;
+    elements.scores.blue.innerHTML = 0;
+    elements.scores.penalty.innerHTML = 0;
+    elements.scores.total.innerHTML = 0;
 
     // 'Lock' buttons disabled
     for (let disableLock of elements.allDisableLock) {
@@ -82,6 +82,9 @@ const crossOutInput = (color, num, lock) => {
     // Calls disableToLeft() to disable invalid buttons based
     // on prev rule
     disableToLeft(color);
+
+    // Updates the number of boxes selected for that color
+    gameState.playerSelectionCount[color]++;
 
     // Create 'X' element to go on top of selected box
     const boxMark = document.createElement('h1');
