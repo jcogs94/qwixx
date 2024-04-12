@@ -23,7 +23,16 @@ const clearBoard = () => {
 
 // Crosses out the selection, updates visuals
 const crossOutInput = (color, num, lock) => {
-    console.log('Whew..... made it...');
+    // Ref
+    console.log(`Color: ${color}\nNum: ${num}\nLock: ${lock}`);
+    console.dir(elements[color][num]);
+
+    // Create 'X' element to go on top of selected box
+    const boxMark = document.createElement('h1');
+    boxMark.setAttribute('class', 'box-mark');
+    boxMark.innerText = 'X';
+
+    elements[color][num].appendChild(boxMark);
 }
 
 // validates the user's input as a valid play

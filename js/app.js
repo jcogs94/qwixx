@@ -19,6 +19,12 @@ console.log(` ROLLLLLLLLLLL\n`, `white1: ${gameState.roll.white1}\n`, `white2: $
 // Ref - log pickable options
 console.dir(gameState.rollValues);
 
+// // Ref - button objs
+// console.dir(elements.red);
+// console.dir(elements.yellow);
+// console.dir(elements.green);
+// console.dir(elements.blue);
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Adds all listeners for buttons
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

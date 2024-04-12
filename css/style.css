@@ -68,8 +68,9 @@ body {
     background-color: white;
     opacity: .8;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 45px;
     font-weight: bold;
+    line-height: 100%;
 }
 
 .lock {
@@ -157,4 +158,11 @@ body {
 
 button:disabled {
     cursor: not-allowed;
+}
+
+.box-mark {
+    position: absolute;
+    font-weight: 1;
+    line-height: 100%;
+    font-size: 4.5rem;
 }
