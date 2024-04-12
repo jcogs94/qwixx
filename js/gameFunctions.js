@@ -116,12 +116,34 @@ const disableToLeft = (color) => {
 }
 
 // Checks if player has reached 5 of a color and unlocks last two boxes
+// Also handles lock button pushes
 const lockCheck = (color, num, lock) => {
     if (gameState.playerSelectionCount[color] >= 5 && gameState.colorLockAvailable[color] === false && gameState.colorInPlay[color]) {
         elements.lockButtons[color].forEach( (lock) => {
             lock.removeAttribute('disabled');
         });
         gameState.colorLockAvailable[color] = true;
+    }
+
+    if (lock) {
+        if (num === 0) {
+            // Player hit 'L' button
+    
+            // Mark 12
+        } else if (num === 12) {
+            // Player hit '12' button
+            
+            // Mark 'L'
+        }
+        
+        // Lock whole row
+        // ~~~~~~~ PLACEHOLDER ~~~~~~
+
+        // Update game state
+        gameState.playerSelectionCount[color]++;
+        gameState.colorInPlay[color] = false;
+        gameState.colorInPlay.count--;
+        gameState.colorLockAvailable[color] = false;
     }
 }
 
