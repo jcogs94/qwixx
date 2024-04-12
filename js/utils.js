@@ -1,4 +1,5 @@
 import { gameState } from "./gameState.js";
+import { rollButton } from "./elements.js";
 
 // Validate color is in play still
 const colorValid = (inputColor) => {
@@ -37,6 +38,9 @@ const additionValid = (inputColor, inputNum) => {
     
     // Valid if the two white dice added together equal this amount
     if (inputNum === gameState.rollValues.whiteTotal && gameState.whiteSelection === false) {
+        // Enables roll dice button
+        rollButton.removeAttribute('disabled');
+        
         gameState.whiteSelection = true;
         return true;
     }

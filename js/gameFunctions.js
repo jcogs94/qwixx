@@ -127,10 +127,6 @@ const lockCheck = (color, num, lock) => {
 
 // Crosses out the selection, updates visuals
 const crossOutInput = (color, num, lock) => {
-    // Ref - button selection
-    console.log(`Selection: ${color} ${num}\nLock: ${lock}`);
-
-
     // Updates 'highest' or 'lowest' to implement the rule that
     // the player can't mark things to the left of any of thier
     // previous marks
@@ -265,6 +261,9 @@ const validateInput = () => {
         // Turn validation before continuing, else message displayed
         if (gameState.diceRolled) {
             if(gameState.combinationSelection) {
+                // Enables roll dice button
+                elements.rollButton.removeAttribute('disabled');
+                
                 gameState.diceRolled = false;
             }
 
@@ -312,29 +311,36 @@ const rollDie = () => {
 
 // Rolls white dice and dice by color if still in play
 const rollDice = () => {
-    gameState.roll.white1 = rollDie();
-    gameState.roll.white2 = rollDie();
+    if (gameState.diceRolled === false) {
+        gameState.roll.white1 = rollDie();
+        gameState.roll.white2 = rollDie();
+    
+        if (gameState.colorInPlay.red) {
+            gameState.roll.red = rollDie();
+        }
+        if (gameState.colorInPlay.yellow) {
+            gameState.roll.yellow = rollDie();
+        }
+        if (gameState.colorInPlay.green) {
+            gameState.roll.green = rollDie();
+        }
+        if (gameState.colorInPlay.blue) {
+            gameState.roll.blue = rollDie();
+        }
+    
+        // Calls function to update possible values from roll
+        calcOptions();
+    
+        // Updates game state
+        gameState.diceRolled = true;
+        gameState.whiteSelection = false;
+        gameState.combinationSelection = false;
 
-    if (gameState.colorInPlay.red) {
-        gameState.roll.red = rollDie();
+        // Disables roll dice button until turn complete
+        elements.rollButton.setAttribute('disabled', 'true');
+    } else {
+        console.log("Dice can't be rolled right now.");
     }
-    if (gameState.colorInPlay.yellow) {
-        gameState.roll.yellow = rollDie();
-    }
-    if (gameState.colorInPlay.green) {
-        gameState.roll.green = rollDie();
-    }
-    if (gameState.colorInPlay.blue) {
-        gameState.roll.blue = rollDie();
-    }
-
-    // Calls function to update possible values from roll
-    calcOptions();
-
-    // Updates game state
-    gameState.diceRolled = true;
-    gameState.whiteSelection = false;
-    gameState.combinationSelection = false;
 }
 
 // export functions for use in app
