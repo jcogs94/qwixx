@@ -30,31 +30,25 @@ const gameOver = () => {
 const updateScoreBoard = () => {
     // Defines array to reference the keys for scores
     let scoresArr = Object.keys(gameState.scores);
-
-    // Resets values if game start, else updates score
-    if (gameState.start) {
-        scoresArr.forEach( (scoreType) => {
-            gameState.scores[scoreType] = 0;
-        });
-    } else {
-        let marksArr = Object.keys(gameState.playerSelectionCount);
+    
+    // Updates scores for gameState
+    let marksArr = Object.keys(gameState.playerSelectionCount);
         
-        // Loops through the colors, checks the score reference in gameState, and updates values
-        marksArr.forEach( (countType) => {
-            // If statetment makes sure that the score value is not at default 0
-            if (gameState.playerSelectionCount[countType] !== 0) {
-                // If penalties, score = count * 5, else uses pointsRef obj to calculate score per color
-                if (countType === 'penalties') {
-                    gameState.scores[countType] = gameState.playerSelectionCount[countType] * 5;
-                } else {
-                    gameState.scores[countType] = gameState.pointsRef[gameState.playerSelectionCount[countType]];
-                }
+    // Loops through the colors, checks the score reference in gameState, and updates values
+    marksArr.forEach( (countType) => {
+        // If statetment makes sure that the score value is not at default 0
+        if (gameState.playerSelectionCount[countType] !== 0) {
+            // If penalties, score = count * 5, else uses pointsRef obj to calculate score per color
+            if (countType === 'penalties') {
+                gameState.scores[countType] = gameState.playerSelectionCount[countType] * 5;
+            } else {
+                gameState.scores[countType] = gameState.pointsRef[gameState.playerSelectionCount[countType]];
             }
-        })
+        }
+    })
 
-        // Updates total
-        gameState.scores.total = gameState.scores.red + gameState.scores.yellow + gameState.scores.green + gameState.scores.blue - gameState.scores.penalties;
-    }
+    // Updates total
+    gameState.scores.total = gameState.scores.red + gameState.scores.yellow + gameState.scores.green + gameState.scores.blue - gameState.scores.penalties;
     
     // Displays updated scores on the dom
     scoresArr.forEach( (scoreType) => {
@@ -98,11 +92,61 @@ const removeXs = () => {
     })
 }
 
-// Clears board to begin a new game
-const newGame = () => {
+// Resets all values in gameState
+const resetGameState = () => {
     // Used for reference in how functions will clear board (updateScoreBoard())
     gameState.start = true;
     
+    // Defines array to reference the keys of multiple objects
+    let keyArr = Object.keys(gameState.scores);
+    
+    // Resets scores
+    keyArr.forEach( (scoreType) => {
+        gameState.scores[scoreType] = 0;
+    });
+
+    // Resets the number of 'boxes' played
+    keyArr = Object.keys(gameState.playerSelectionCount);
+    keyArr.forEach( (selection) => {
+        gameState.playerSelectionCount[selection] = 0;
+    });
+    
+    // Resets the colors in play
+    keyArr = Object.keys(gameState.colorInPlay);
+    keyArr.forEach( (type) => {
+        if (type === 'count') {
+            gameState.colorInPlay[type] = 4;
+        } else {
+            gameState.colorInPlay[type] = true;
+        }
+    });
+
+    // Resets locks available
+    keyArr = Object.keys(gameState.colorLockAvailable);
+    keyArr.forEach( (color) => {
+        gameState.colorLockAvailable[color] = 0;
+    });
+
+    // Reset 'hightest' and 'lowest' values
+    gameState.colorStatus.lowestRed = 0;
+    gameState.colorStatus.lowestYellow = 0;
+    gameState.colorStatus.highestGreen = 13;
+    gameState.colorStatus.highestBlue = 13;
+
+    // Reset playerChoice
+    gameState.playerChoice = '';
+
+    // Reset booleans
+    gameState.diceRolled = false;
+    gameState.whiteSelection = false;
+    gameState.combinationSelection = false;
+}
+
+// Clears board to begin a new game
+const newGame = () => {
+    // Resets values in gameState for a new game
+    resetGameState();
+
     // Resets the scores and displays new reset scores
     updateScoreBoard();
 
@@ -111,15 +155,6 @@ const newGame = () => {
 
     // Removes any 'X' marks from previous game
     removeXs();
-
-    // Reset 'hightest' and 'lowest' values
-    gameState.colorStatus.lowestRed = 0;
-    gameState.colorStatus.lowestYellow = 0;
-    gameState.colorStatus.highestGreen = 13;
-    gameState.colorStatus.highestBlue = 13;
-
-    // Reset diceRolled and gameState.start
-    gameState.diceRolled = false;
 }
 
 // Disables buttons to the left of the user selection to have visual reference
