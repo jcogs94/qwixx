@@ -3,6 +3,27 @@ let gameState = {
     start: true,
     gameOver: false,
     playerChoice: '',
+    scores: {
+        red: 0,
+        yellow: 0,
+        green: 0,
+        blue: 0,
+        penalties: 0,
+        total: 0
+    },
+    pointsRef: {
+        1: 1,
+        2: 3,
+        4: 10,
+        5: 15,
+        6: 21,
+        7: 28,
+        8: 36,
+        9: 45,
+        10: 55,
+        11: 66,
+        12: 78
+    },
     playerSelectionCount: {
         red: 0,
         yellow: 0,
