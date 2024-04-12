@@ -45,6 +45,9 @@ const resetDisabledButtons = () => {
             elements[color[i]][key].removeAttribute('disabled');
         })
     }
+
+    // Enables roll button
+    elements.rollButton.removeAttribute('disabled');
     
     // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
     for (let disableLock of elements.lockButtons.all) {
@@ -312,6 +315,11 @@ const rollDie = () => {
 // Rolls white dice and dice by color if still in play
 const rollDice = () => {
     if (gameState.diceRolled === false) {
+        // Game started on first roll
+        if (gameState.start) {
+            gameState.start = false;
+        }
+        
         gameState.roll.white1 = rollDie();
         gameState.roll.white2 = rollDie();
     
