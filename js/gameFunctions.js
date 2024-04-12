@@ -78,10 +78,10 @@ const resetDisabledButtons = () => {
     // Enables roll button
     elements.rollButton.removeAttribute('disabled');
 
-    // Resets penalty boxes
+    // Resets penalty boxes to be unchecked and disabled until first roll
     for (let i = 1; i < 5; i++) {
         elements.penaltyBox[i].checked = false;
-        elements.penaltyBox[i].removeAttribute('disabled');
+        elements.penaltyBox[i].setAttribute('disabled', true);
     }
     
     // Adds 'disabled' attribute to the lock buttons to show user they are unavailable at game start
@@ -120,7 +120,6 @@ const newGame = () => {
 
     // Reset diceRolled and gameState.start
     gameState.diceRolled = false;
-    gameState.start = !gameState.start;
 }
 
 // Disables buttons to the left of the user selection to have visual reference
@@ -354,6 +353,11 @@ const rollDice = () => {
     if (gameState.diceRolled === false) {
         // Game started on first roll
         if (gameState.start) {
+            // Enables penalty boxes
+            for (let i = 1; i < 5; i++) {
+                elements.penaltyBox[i].removeAttribute('disabled');
+            }
+
             gameState.start = false;
         }
         
