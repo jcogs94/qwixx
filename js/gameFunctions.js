@@ -34,7 +34,7 @@ const updateScoreBoard = () => {
 }
 
 // Clears board to begin a new game
-const clearBoard = () => {
+const newGame = () => {
     // Used for reference in how functions will clear board (updateScoreBoard())
     gameState.start = true;
     
@@ -89,7 +89,7 @@ const disableToLeft = (color) => {
 
 // Crosses out the selection, updates visuals
 const crossOutInput = (color, num, lock) => {
-    // Ref
+    // Ref - button selection
     console.log(`Selection: ${color} ${num}\nLock: ${lock}`);
 
     // Updates 'highest' or 'lowest' to implement the rule that
@@ -238,4 +238,4 @@ const rollDice = () => {
 }
 
 // export functions for use in app
-export { clearBoard, rollDice, validateInput };
+export { newGame, rollDice, validateInput };

@@ -7,15 +7,7 @@ import { addListeners } from "./listeners.js";
 
 
 // Temp start game
-gameFunctions.clearBoard();
-// gameFunctions.rollDice();
-
-
-// Ref - log roll
-console.log(` ROLLLLLLLLLLL\n`, `white1: ${gameState.roll.white1}\n`, `white2: ${gameState.roll.white2}\n\n`, `red: ${gameState.roll.red}\n`, `yellow: ${gameState.roll.yellow}\n`, `green: ${gameState.roll.green}\n`, `blue: ${gameState.roll.blue}`);
-
-// Ref - log pickable options
-console.dir(gameState.rollValues);
+gameFunctions.newGame();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Adds all listeners for buttons

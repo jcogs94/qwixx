@@ -38,7 +38,7 @@ const rollButton = () => {
 }
 
 const newGameButton = () => {
-    gameFunctions.clearBoard();
+    gameFunctions.newGame();
 }
 
 export { red, yellow, green, blue, rollButton, newGameButton };
