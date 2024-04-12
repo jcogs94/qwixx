@@ -52,6 +52,14 @@ const resetDisabledButtons = () => {
     }
 }
 
+// Function used to remove 'X's left from previous game
+const removeXs = () => {
+    const xElements = document.querySelectorAll('.box-mark');
+    xElements.forEach( (markedBox) => {
+        markedBox.remove();
+    })
+}
+
 // Clears board to begin a new game
 const newGame = () => {
     // Used for reference in how functions will clear board (updateScoreBoard())
@@ -62,6 +70,9 @@ const newGame = () => {
 
     // Reset disabled buttons to false, disable lock buttons
     resetDisabledButtons();
+
+    // Removes any 'X' marks from previous game
+    removeXs();
 
     // Reset 'hightest' and 'lowest' values
     gameState.colorStatus.lowestRed = 0;
