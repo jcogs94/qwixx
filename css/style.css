@@ -33,7 +33,7 @@ body {
     width: 927px;
     height: 532px;
     gap: 10px;
-    margin-top: 30px;
+    margin: 20px auto;
     background-color: whitesmoke;
     border: 2px solid black;
 }
@@ -189,7 +189,6 @@ button:disabled {
     justify-content: space-around;
     width: 927px;
     height: 200px;
-    margin: 20px auto;
     border: 2px solid black;
     border-radius: 8px;
     background-color: whitesmoke;
