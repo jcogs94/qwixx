@@ -2,8 +2,18 @@ import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as utils from "./utils.js"
 
+// Resets dice display to be blank
+const resetDice = () => {
+    const diceArr = Object.keys(elements.dice);
+    diceArr.forEach( (die) => {
+        elements.dice[die].innerHTML = '';
+    })
+}
+
 const gameOver = () => {
     console.log('Game Over!!');
+
+    resetDice();
 
     let interactiveElements = ['red', 'yellow', 'green', 'blue', 'penaltyBox', 'rollButton'];
     interactiveElements.forEach( (element) => {
@@ -147,6 +157,9 @@ const newGame = () => {
     // Resets values in gameState for a new game
     resetGameState();
 
+    // Resets the dice to be empty
+    resetDice();
+
     // Resets the scores and displays new reset scores
     updateScoreBoard();
 
@@ -195,6 +208,11 @@ const lockCheck = (color, num, lock) => {
         });
         gameState.colorLockAvailable[color] = true;
     }
+}
+
+// Function to remove a color from the dice rolls
+const removeColor = (color) => {
+
 }
 
 // Crosses out the selection, updates visuals
@@ -274,6 +292,8 @@ const crossOutInput = (color, num, lock) => {
         });
 
         // Update game state
+        gameState.removeColor = true;                   // Color will need removing
+        gameState.colorToRemove = color;                // Saves the color that needs removing
         gameState.playerSelectionCount[color]++;        // For the 12 or 'L'
         gameState.colorInPlay[color] = false;           // Takes color out of play
         gameState.colorInPlay.count--;                  // Notes color taken out of play (for the end of game)
@@ -406,20 +426,34 @@ const rollDice = () => {
             gameState.start = false;
         }
         
+        // Rolls white die
         gameState.roll.white1 = rollDie();
+        elements.dice.white1.innerHTML = gameState.roll.white1;
+        
         gameState.roll.white2 = rollDie();
-    
+        elements.dice.white2.innerHTML = gameState.roll.white2;
+        
+        // Removes color from game if locked on the previous turn
+        if (gameState.removeColor) {
+            removeColor(gameState.colorToRemove);
+        }
+        
+        // Rolls each color if in play and updates dom
         if (gameState.colorInPlay.red) {
             gameState.roll.red = rollDie();
+            elements.dice.red.innerHTML = gameState.roll.red;
         }
         if (gameState.colorInPlay.yellow) {
             gameState.roll.yellow = rollDie();
+            elements.dice.yellow.innerHTML = gameState.roll.yellow;
         }
         if (gameState.colorInPlay.green) {
             gameState.roll.green = rollDie();
+            elements.dice.green.innerHTML = gameState.roll.green;
         }
         if (gameState.colorInPlay.blue) {
             gameState.roll.blue = rollDie();
+            elements.dice.blue.innerHTML = gameState.roll.blue;
         }
     
         // Calls function to update possible values from roll

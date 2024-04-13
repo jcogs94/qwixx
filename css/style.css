@@ -214,10 +214,13 @@ button:disabled {
     height: 65px;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     color: black;
     border: 2px solid black;
     border-radius: 15px;
+    line-height: 100%;
+    font-size: 50px;
+    font-weight: 900;
 }
 
 .white-die {

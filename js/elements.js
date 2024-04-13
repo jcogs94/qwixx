@@ -89,4 +89,4 @@ for (let i = 0; i < 4; i++) {
 // Exports all objects/elements
 export {
     red, yellow, green, blue, scores, lockButtons,
-    rollButton, newGameButton, penaltyBox };
+    rollButton, newGameButton, penaltyBox, dice };
