@@ -4,8 +4,6 @@ let gameState = {
     playerChoice: '',
     whiteSelection: false,
     combinationSelection: false,
-    removeColor: false,
-    colorToRemove: '',
     scores: {
         red: 0,
         yellow: 0,

@@ -4,6 +4,27 @@ import * as utils from "./utils.js"
 
 // Resets dice display to be blank
 const resetDice = () => {
+    // Replaces red die if previously removed    
+    if (document.querySelector('#red-die') === null) {
+        elements.dice.white2.insertAdjacentElement('afterend', elements.dice.red);
+    }
+
+    // Replaces yellow die if previously removed    
+    if (document.querySelector('#yellow-die') === null) {
+        elements.dice.red.insertAdjacentElement('afterend', elements.dice.yellow);
+    }
+
+    // Replaces red die if previously removed    
+    if (document.querySelector('#green-die') === null) {
+        elements.dice.yellow.insertAdjacentElement('afterend', elements.dice.green);
+    }
+
+    // Replaces red die if previously removed    
+    if (document.querySelector('#blue-die') === null) {
+        elements.dice.green.insertAdjacentElement('afterend', elements.dice.blue);
+    }
+
+    // Resets dice to appear blank until first roll
     const diceArr = Object.keys(elements.dice);
     diceArr.forEach( (die) => {
         elements.dice[die].innerHTML = '';
@@ -12,8 +33,6 @@ const resetDice = () => {
 
 const gameOver = () => {
     console.log('Game Over!!');
-
-    resetDice();
 
     let interactiveElements = ['red', 'yellow', 'green', 'blue', 'penaltyBox', 'rollButton'];
     interactiveElements.forEach( (element) => {
@@ -212,7 +231,7 @@ const lockCheck = (color, num, lock) => {
 
 // Function to remove a color from the dice rolls
 const removeColor = (color) => {
-
+    elements.dice[color].remove();
 }
 
 // Crosses out the selection, updates visuals
@@ -291,9 +310,10 @@ const crossOutInput = (color, num, lock) => {
             elements[color][key].setAttribute('disabled', true);
         });
 
+        // Removes locked color die from game
+        removeColor(color);
+
         // Update game state
-        gameState.removeColor = true;                   // Color will need removing
-        gameState.colorToRemove = color;                // Saves the color that needs removing
         gameState.playerSelectionCount[color]++;        // For the 12 or 'L'
         gameState.colorInPlay[color] = false;           // Takes color out of play
         gameState.colorInPlay.count--;                  // Notes color taken out of play (for the end of game)
@@ -432,11 +452,6 @@ const rollDice = () => {
         
         gameState.roll.white2 = rollDie();
         elements.dice.white2.innerHTML = gameState.roll.white2;
-        
-        // Removes color from game if locked on the previous turn
-        if (gameState.removeColor) {
-            removeColor(gameState.colorToRemove);
-        }
         
         // Rolls each color if in play and updates dom
         if (gameState.colorInPlay.red) {

@@ -210,14 +210,14 @@ button:disabled {
 }
 
 .die {
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: black;
-    border: 2px solid black;
-    border-radius: 15px;
+    border: 3px solid black;
+    border-radius: 25px;
     line-height: 100%;
     font-size: 50px;
     font-weight: 900;
