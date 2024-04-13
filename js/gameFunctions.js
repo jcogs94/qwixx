@@ -446,6 +446,7 @@ const rollDice = () => {
                 elements.penaltyBox[i].removeAttribute('disabled');
             }
 
+            displayMessage.title();
             gameState.start = false;
         }
         

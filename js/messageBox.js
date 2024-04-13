@@ -10,6 +10,10 @@ const displayMessage = {
 
         pElement.innerHTML = 'Roll the dice to begin the game!';
         messageBoxElement.appendChild(pElement);
+    },
+    title: () => {
+        headerElement.innerHTML = 'Qwixx'
+        pElement.innerHTML = 'A fast-paced dice rolling game';
     }
 }
 
