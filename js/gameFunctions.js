@@ -242,7 +242,6 @@ const crossOutInput = (color, num, lock) => {
     // color have been selected
     lockCheck(color, num, lock);
 
-
     // If a lock has been selected, also marks the adjacent
     // box and adjusts the score
     if (lock) {
