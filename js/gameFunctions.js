@@ -348,11 +348,11 @@ const validateInput = () => {
                 
                 gameState.diceRolled = false;
             }
-
+            
             if (numChanged) {
                 num = 0;
             }
-
+            
             crossOutInput(color, num, lock);
         }
     }
@@ -395,7 +395,7 @@ const rollDie = () => {
 
 // Rolls white dice and dice by color if still in play
 const rollDice = () => {
-    if (gameState.diceRolled === false) {
+    if (gameState.diceRolled === false || gameState.whiteSelection) {
         // Game started on first roll
         if (gameState.start) {
             // Enables penalty boxes
