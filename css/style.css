@@ -178,6 +178,7 @@ button:disabled {
     margin: 20px auto;
     border: 2px solid black;
     border-radius: 8px;
+    background-color: whitesmoke;
 }
 
 #player-buttons {
@@ -194,6 +195,8 @@ button:disabled {
     justify-content: center;
     align-items: center;
     margin: 10px auto;
+    background-color: white;
+    border-radius: 8px;
 }
 
 #dice-box {
@@ -202,16 +205,37 @@ button:disabled {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 8px;
 }
 
 .die {
     width: 65px;
     height: 65px;
-    background-color: black;
     display: flex;
     justify-content: center;
     align-content: center;
-    color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.white-die {
+    background-color: white;
+}
+
+#red-die {
+    background-color: red;
+}
+
+#yellow-die {
+    background-color: yellow;
+}
+
+#green-die {
+    background-color: green;
+}
+
+#blue-die {
+    background-color: blue;
 }

@@ -42,6 +42,16 @@ const scores = {
     total: document.querySelector('#total-box')
 }
 
+// Dice elements
+const dice = {
+    white1: document.querySelector('#white1'),
+    white2: document.querySelector('#white2'),
+    red: document.querySelector('#red-die'),
+    yellow: document.querySelector('#yellow-die'),
+    green: document.querySelector('#green-die'),
+    blue: document.querySelector('#blue-die')
+}
+
 // Object to contain all lock button elements
 const lockButtons = {
     all: document.querySelectorAll('.disable-lock'),
