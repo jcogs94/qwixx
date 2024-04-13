@@ -1,13 +1,14 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;;
 }
 
 body {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-    flex-direction: column;
+    max-width: 1500px;
 }
 
 #message-box {
@@ -28,7 +29,22 @@ body {
     font-size: 1.3rem;
 }
 
+#play-column {
+    margin-left: 220px;
+}
+
+#turn-box {
+    height: 532px;
+    width: 300px;
+    margin-top: 140px;
+    margin-left: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+}
+
 #board {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-content: center;
