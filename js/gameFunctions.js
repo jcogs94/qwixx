@@ -124,7 +124,7 @@ const resetGameState = () => {
     // Resets locks available
     keyArr = Object.keys(gameState.colorLockAvailable);
     keyArr.forEach( (color) => {
-        gameState.colorLockAvailable[color] = 0;
+        gameState.colorLockAvailable[color] = false;
     });
 
     // Reset 'hightest' and 'lowest' values
@@ -241,6 +241,7 @@ const crossOutInput = (color, num, lock) => {
     // Enables 'lock' buttons if more than five of that
     // color have been selected
     lockCheck(color, num, lock);
+
 
     // If a lock has been selected, also marks the adjacent
     // box and adjusts the score
