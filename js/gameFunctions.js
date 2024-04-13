@@ -296,6 +296,7 @@ const validateInput = () => {
     let color = input[0];
     let num = 0;
     let lock = false;
+    let numChanged = false;
 
     // Checks the last character of the string given by button press
     // If 'L', lock. Else, num
@@ -317,8 +318,13 @@ const validateInput = () => {
 
     // If the color is valid and 'L' or '12' have been pressed,
     // makes sure the 'L' press num equal to '12'
-    if (colorValid && lock) {
-        num = 12;
+    if (colorValid && lock && num === 0) {
+        if (color === 'red' || color === 'yellow') {
+            num = 12;
+        } else if (color === 'green' || color === 'blue'){
+            num = 2;
+        }
+        numChanged = true;
     }
 
     // Checks if the number in that color is valid
@@ -341,6 +347,10 @@ const validateInput = () => {
                 elements.rollButton.removeAttribute('disabled');
                 
                 gameState.diceRolled = false;
+            }
+
+            if (numChanged) {
+                num = 0;
             }
 
             crossOutInput(color, num, lock);
