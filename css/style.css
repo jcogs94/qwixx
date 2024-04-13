@@ -10,7 +10,21 @@ body {
     flex-direction: column;
 }
 
-/* Start of actual code */
+#message-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    width: 927px;
+    height: 100px;
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+}
+
 #board {
     display: flex;
     flex-direction: column;
