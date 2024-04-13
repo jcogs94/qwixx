@@ -1,5 +1,6 @@
 import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
+import { displayMessage } from "./messageBox.js";
 import * as utils from "./utils.js"
 
 // Resets dice display to be blank
@@ -173,6 +174,8 @@ const resetGameState = () => {
 
 // Clears board to begin a new game
 const newGame = () => {
+    displayMessage.welcome();
+    
     // Resets values in gameState for a new game
     resetGameState();
 

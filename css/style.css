@@ -23,6 +23,8 @@ body {
     border: 2px solid black;
     border-radius: 8px;
     background-color: whitesmoke;
+    font-weight: 900;
+    gap: 5px;
 }
 
 #board {

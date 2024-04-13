@@ -1,3 +1,6 @@
+// Message box element
+const messageBox = document.querySelector('#message-box');
+
 // Define empty objects to obtain button elements by color
 let red = {};
 let yellow = {};
@@ -89,4 +92,5 @@ for (let i = 0; i < 4; i++) {
 // Exports all objects/elements
 export {
     red, yellow, green, blue, scores, lockButtons,
-    rollButton, newGameButton, penaltyBox, dice };
+    rollButton, newGameButton, penaltyBox, dice,
+    messageBox };
