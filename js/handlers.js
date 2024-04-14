@@ -1,6 +1,7 @@
 import { gameState } from "./gameState.js";
 import * as gameFunctions from "./gameFunctions.js";
 import * as elements from "./elements.js";
+import * as displayMessage from "./displayMessage.js";
 
 // Each of the handlers below update the 'playerChoice' and call for validation
 // if the dice have been rolled
@@ -75,9 +76,10 @@ const penaltyBox = () => {
         if (gameState.playerSelectionCount.penalties === 4) {
             gameFunctions.gameOver();
         } else {
-            // Ends turn and enables roll button
+            // Ends turn, enables roll button, and removes options display
             gameState.diceRolled = false;
             elements.rollButton.removeAttribute('disabled');
+            displayMessage.removeColorOption('all');
         }
     } else {
         // Unchecks the checked box
