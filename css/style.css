@@ -20,7 +20,7 @@ body {
     justify-content: center;
     width: 927px;
     height: 100px;
-    margin-top: 20px;
+    margin-top: 15px;
     border: 2px solid black;
     border-radius: 8px;
     background-color: whitesmoke;
@@ -36,13 +36,37 @@ body {
     align-items: center;
 }
 
-#turn-box, #instructions {
-    height: 532px;
+#turn-box, #instructions-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 752px;
     width: 300px;
-    margin: 0 20px;
+    margin: 20px 20px 0;
     border: 2px solid black;
     border-radius: 8px;
     background-color: whitesmoke;
+}
+
+#instructions-box {
+    padding: 10px 10px 10px 30px;
+}
+
+#instructions-box > * {
+    margin-top: 5px;
+}
+
+.instruction {
+    font-size: .97rem;
+}
+
+#play-column {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
 }
 
 #board {

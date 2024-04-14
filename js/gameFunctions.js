@@ -174,8 +174,6 @@ const resetGameState = () => {
 
 // Clears board to begin a new game
 const newGame = () => {
-    displayMessage.welcome();
-    
     // Resets values in gameState for a new game
     resetGameState();
 
