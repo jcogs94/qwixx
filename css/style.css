@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    max-width: 1500px;
 }
 
 #message-box {
