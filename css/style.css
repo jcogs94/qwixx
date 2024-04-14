@@ -54,8 +54,14 @@ body {
     padding: 10px 10px 10px 30px;
 }
 
-#instructions-box > * {
-    margin-top: 5px;
+#instructions-ul {
+    margin-top: 12px;
+}
+
+#instructions-box > h2 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid black;
 }
 
 .instruction {
