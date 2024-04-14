@@ -189,8 +189,11 @@ const newGame = () => {
     // Removes any 'X' marks from previous game
     removeXs();
 
-    // Resets turn box
+    // Removes the options from the turn box until the first roll
     displayMessage.removeOptions();
+
+    // Resets color options that may have previously been removed
+    displayMessage.resetColorOptions();
 }
 
 // Disables buttons to the left of the user selection to have visual reference
@@ -316,6 +319,9 @@ const crossOutInput = (color, num, lock) => {
 
         // Removes locked color die from game
         removeColor(color);
+
+        // Removes color option from turn box
+        displayMessage.removeColorOption(color);
 
         // Update game state
         gameState.playerSelectionCount[color]++;        // For the 12 or 'L'
