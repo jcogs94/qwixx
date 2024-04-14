@@ -16,6 +16,16 @@ const removeOptions = () => {
 
 const removeColorOption = (color) => {
     switch (color) {
+        case 'all':
+            whiteOptionsElement.remove();
+            redOptionsElement.remove();
+            yellowOptionsElement.remove();
+            greenOptionsElement.remove();
+            blueOptionsElement.remove();
+            break;
+        case 'white':
+            whiteOptionsElement.remove();
+            break;
         case 'red':
             redOptionsElement.remove();
             break;
@@ -31,21 +41,33 @@ const removeColorOption = (color) => {
     }
 }
 
-const resetColorOptions = (color) => {
-    if (document.querySelector('#red-options') === null) {
-        whiteOptionsElement.insertAdjacentElement('afterend', redOptionsElement);
+const resetColorOptions = () => {
+    if (document.querySelector('#white-options') === null) {
+        optionsBoxElement.prepend(whiteOptionsElement);
+    }
+    
+    if (gameState.colorInPlay.red) {
+        if (document.querySelector('#red-options') === null) {
+            whiteOptionsElement.insertAdjacentElement('afterend', redOptionsElement);
+        }
     }
 
-    if (document.querySelector('#yellow-options') === null) {
-        redOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+    if (gameState.colorInPlay.yellow) {
+        if (document.querySelector('#yellow-options') === null) {
+            redOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+        }
     }
 
-    if (document.querySelector('#green-options') === null) {
-        yellowOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+    if (gameState.colorInPlay.green) {
+        if (document.querySelector('#green-options') === null) {
+            yellowOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+        }
     }
 
-    if (document.querySelector('#blue-options') === null) {
-        greenOptionsElement.insertAdjacentElement('afterend', blueOptionsElement);
+    if (gameState.colorInPlay.blue) {
+        if (document.querySelector('#blue-options') === null) {
+            greenOptionsElement.insertAdjacentElement('afterend', blueOptionsElement);
+        }
     }
 }
 
@@ -93,6 +115,9 @@ const options = () => {
         optionsContainerElement.appendChild(optionsHeadingBoxElement);
         optionsContainerElement.appendChild(optionsBoxElement);
     }
+
+    // Resets all color option that may have been removed from the previous turn
+    resetColorOptions();
 }
 
 export { removeOptions, removeColorOption, resetColorOptions, options };

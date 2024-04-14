@@ -1,5 +1,6 @@
 import { gameState } from "./gameState.js";
 import { rollButton } from "./elements.js";
+import * as displayMessage from "./displayMessage.js";
 
 // Validate color is in play still
 const colorValid = (inputColor) => {
@@ -41,6 +42,8 @@ const additionValid = (inputColor, inputNum) => {
         // Enables roll dice button
         rollButton.removeAttribute('disabled');
         
+        displayMessage.removeColorOption('white');
+
         gameState.whiteSelection = true;
         return true;
     }
@@ -73,6 +76,9 @@ const additionValid = (inputColor, inputNum) => {
     // the player's selection, gameState updated as that part of
     // their turn being completed
     if (combinationValid && gameState.combinationSelection === false) {
+        // Removes all options from turn box, turn is over
+        displayMessage.removeColorOption('all');
+
         gameState.combinationSelection = true;
         return true;
     } else {
