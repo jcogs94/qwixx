@@ -42,8 +42,6 @@ const additionValid = (inputColor, inputNum) => {
         // Enables roll dice button
         rollButton.removeAttribute('disabled');
         
-        displayMessage.removeColorOption('white');
-
         gameState.whiteSelection = true;
         return true;
     }

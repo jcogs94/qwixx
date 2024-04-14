@@ -54,19 +54,29 @@ const resetColorOptions = () => {
 
     if (gameState.colorInPlay.yellow) {
         if (document.querySelector('#yellow-options') === null) {
-            redOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+            if (gameState.colorInPlay.red) {
+                redOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+            } else {
+                whiteOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+            }
         }
     }
 
     if (gameState.colorInPlay.green) {
         if (document.querySelector('#green-options') === null) {
-            yellowOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+            if (gameState.colorInPlay.yellow) {
+                yellowOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+            } else if (gameState.colorInPlay.red) {
+                redOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+            } else {
+                whiteOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+            }
         }
     }
 
     if (gameState.colorInPlay.blue) {
         if (document.querySelector('#blue-options') === null) {
-            greenOptionsElement.insertAdjacentElement('afterend', blueOptionsElement);
+            optionsBoxElement.append(blueOptionsElement);
         }
     }
 }
