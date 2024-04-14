@@ -90,7 +90,7 @@ body {
 }
 
 #name {
-    margin: 10px 0 5px 40px;
+    margin: 10px 0 0 40px;
 }
 
 #number-grid {
@@ -287,22 +287,70 @@ button:disabled {
     font-weight: 900;
 }
 
-.white-die {
+.white-die, #white-options {
     background-color: white;
 }
 
-#red-die {
+#red-die, #red-options {
     background-color: red;
 }
 
-#yellow-die {
+#yellow-die, #yellow-options {
     background-color: yellow;
 }
 
-#green-die {
+#green-die, #green-options {
     background-color: green;
 }
 
-#blue-die {
+#blue-die, #blue-options {
     background-color: blue;
+}
+
+#turn-box {
+    justify-content: space-between;
+}
+
+#options-container {
+    height: 390px;
+    width: 100%;
+}
+
+#options-heading-box {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid black;
+    line-height: 100%;
+    font-size: 2.1rem;
+    font-weight: 900;
+}
+
+#options-box {
+    height: 335px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#options-box > * {
+    height: 45px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    line-height: 100%;
+    font-weight: 900;
+    font-size: 2.3rem;
+}
+
+#guide-box {
+    height: 200px;
+    width: 100%;
+    background-color: blueviolet;
 }

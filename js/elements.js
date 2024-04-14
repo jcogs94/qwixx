@@ -1,6 +1,3 @@
-// Message box element
-const messageBox = document.querySelector('#message-box');
-
 // Define empty objects to obtain button elements by color
 let red = {};
 let yellow = {};
@@ -89,8 +86,16 @@ for (let i = 0; i < 4; i++) {
     penaltyBox[key] = allPenaltyElements[i];
 }
 
+// Turn box elements
+const optionsContainer = document.querySelector('#options-container');
+const optionsHeadingBox = document.querySelector('#options-heading-box')
+const optionsBox = document.querySelector('#options-box');
+
+const guideBox = document.querySelector('#guide-box');
+
 // Exports all objects/elements
 export {
     red, yellow, green, blue, scores, lockButtons,
     rollButton, newGameButton, penaltyBox, dice,
-    messageBox };
+    optionsContainer, optionsHeadingBox, optionsBox,
+    guideBox };

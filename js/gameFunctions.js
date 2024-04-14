@@ -1,6 +1,6 @@
 import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
-import { displayMessage } from "./messageBox.js";
+import * as displayMessage from "./displayMessage.js";
 import * as utils from "./utils.js"
 
 // Resets dice display to be blank
@@ -188,6 +188,9 @@ const newGame = () => {
 
     // Removes any 'X' marks from previous game
     removeXs();
+
+    // Resets turn box
+    displayMessage.removeOptions();
 }
 
 // Disables buttons to the left of the user selection to have visual reference
@@ -443,7 +446,7 @@ const rollDice = () => {
             for (let i = 1; i < 5; i++) {
                 elements.penaltyBox[i].removeAttribute('disabled');
             }
-
+            
             gameState.start = false;
         }
         
@@ -471,9 +474,12 @@ const rollDice = () => {
             gameState.roll.blue = rollDie();
             elements.dice.blue.innerHTML = gameState.roll.blue;
         }
-    
+        
         // Calls function to update possible values from roll
         calcOptions();
+
+        // Displays options
+        displayMessage.options();
     
         // Updates game state
         gameState.diceRolled = true;

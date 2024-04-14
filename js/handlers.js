@@ -50,9 +50,6 @@ const blue = (blueButtonPressed) => {
 
 const rollButton = () => {
     gameFunctions.rollDice();
-    
-    // Ref - log pickable options
-    console.dir(gameState.rollValues);
 }
 
 const newGameButton = () => {
