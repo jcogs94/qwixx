@@ -54,6 +54,9 @@ const gameOver = () => {
                 break;
         }
     })
+
+    // Remove options from turn box
+    displayMessage.removeOptions();
 }
 
 // Loops through score values and displays them on the dom
