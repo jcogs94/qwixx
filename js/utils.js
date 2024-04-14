@@ -42,6 +42,10 @@ const additionValid = (inputColor, inputNum) => {
         // Enables roll dice button
         rollButton.removeAttribute('disabled');
         
+        // Removes white option if used
+        displayMessage.removeColorOption('white');
+        displayMessage.removeOptionOne();
+
         gameState.whiteSelection = true;
         return true;
     }
@@ -76,6 +80,12 @@ const additionValid = (inputColor, inputNum) => {
     if (combinationValid && gameState.combinationSelection === false) {
         // Removes all options from turn box, turn is over
         displayMessage.removeColorOption('all');
+
+        // Removes turn options
+        displayMessage.removeTurnOptions();
+
+        // Displays roll prompt
+        displayMessage.rollPrompt();
 
         gameState.combinationSelection = true;
         return true;

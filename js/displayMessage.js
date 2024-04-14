@@ -8,6 +8,42 @@ const yellowOptionsElement = document.querySelector('#yellow-options');
 const greenOptionsElement = document.querySelector('#green-options');
 const blueOptionsElement = document.querySelector('#blue-options');
 
+// Creates new elements to be added during the game
+const rollToBeginElement = document.createElement('h3');
+rollToBeginElement.setAttribute('id', 'roll-to-begin');
+rollToBeginElement.innerHTML = '<= Roll dice to begin';
+
+const chooseContainerElement = document.createElement('div');
+chooseContainerElement.setAttribute('id', 'choose-container');
+
+const chooseElement = document.createElement('h2');
+chooseElement.setAttribute('id', 'choose');
+chooseElement.innerHTML = 'Choose one or both:';
+
+const chooseOptionsElement = document.createElement('ul');
+const optionOneElement = document.createElement('li');
+optionOneElement.setAttribute('id', 'option-one');
+optionOneElement.innerHTML = `Use the addition of the white dice (first)`;
+const optionTwoElement = document.createElement('li');
+optionTwoElement.setAttribute('id', 'option-two');
+optionTwoElement.innerHTML = `Use the addition of one white die and one colored die (second)`;
+chooseOptionsElement.appendChild(optionOneElement);
+chooseOptionsElement.appendChild(optionTwoElement);
+
+// Puts all necessary elements into the options container
+chooseContainerElement.appendChild(chooseElement);
+chooseContainerElement.appendChild(chooseOptionsElement);
+
+const orElement = document.createElement('h3');
+orElement.innerHTML = 'OR';
+
+const selectPenaltyElement = document.createElement('h2');
+selectPenaltyElement.innerHTML = 'Select a Penalty Box';
+
+const rollDiceOption = document.createElement('h2');
+rollDiceOption.setAttribute('id', 'roll-dice-option');
+rollDiceOption.innerHTML = 'Roll Dice';
+
 // Remove heading and option elements from dom
 const removeOptions = () => {
     optionsHeadingBoxElement.remove();
@@ -130,4 +166,49 @@ const options = () => {
     resetColorOptions();
 }
 
-export { removeOptions, removeColorOption, resetColorOptions, options };
+const rollToBegin = () => {
+    guideBoxElement.appendChild(rollToBeginElement);
+}
+
+const removeRollToBegin = () => {
+    rollToBeginElement.remove();
+}
+
+const turnOptions = () => {
+    if (document.querySelector('#roll-dice-option') !== null) {
+        rollDiceOption.remove();
+    }
+
+    if (document.querySelector('#option-one') === null) {
+        chooseOptionsElement.prepend(optionOneElement);
+    }
+
+    if (document.querySelector('#option-two') === null) {
+        chooseOptionsElement.appendChild(optionTwoElement);
+    }
+    
+    guideBoxElement.appendChild(chooseContainerElement);
+    guideBoxElement.appendChild(orElement);
+    guideBoxElement.appendChild(selectPenaltyElement);
+}
+
+const removeOptionOne = () => {
+    document.querySelector('#option-one').remove();
+    selectPenaltyElement.remove();
+    guideBoxElement.appendChild(rollDiceOption);
+}
+
+const removeTurnOptions = () => {
+    chooseContainerElement.remove();
+    orElement.remove();
+    selectPenaltyElement.remove();
+    rollDiceOption.remove();
+}
+
+const rollPrompt = () => {
+
+}
+
+export { removeOptions, removeColorOption, resetColorOptions,
+            options, rollToBegin, removeRollToBegin, turnOptions,
+            removeOptionOne, removeTurnOptions, rollPrompt };

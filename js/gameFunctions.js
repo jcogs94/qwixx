@@ -57,6 +57,9 @@ const gameOver = () => {
 
     // Remove options from turn box
     displayMessage.removeOptions();
+
+    // Removes options in turn box
+    displayMessage.removeTurnOptions();
 }
 
 // Loops through score values and displays them on the dom
@@ -197,6 +200,12 @@ const newGame = () => {
 
     // Resets color options that may have previously been removed
     displayMessage.resetColorOptions();
+
+    // Removes turn options for start of game
+    displayMessage.removeTurnOptions();
+
+    // Prompts player to roll dice
+    displayMessage.rollToBegin();
 }
 
 // Disables buttons to the left of the user selection to have visual reference
@@ -483,6 +492,14 @@ const rollDice = () => {
             
             gameState.start = false;
         }
+
+        // Removes roll prompt
+        if (document.querySelector('#roll-to-begin') !== null) {
+            displayMessage.removeRollToBegin();
+        }
+
+        // Displays turn prompt
+        displayMessage.turnOptions();
         
         // Rolls white die
         gameState.roll.white1 = rollDie();
@@ -515,8 +532,6 @@ const rollDice = () => {
         // Displays options
         displayMessage.options();
 
-        console.dir(gameState);
-    
         // Updates game state
         gameState.diceRolled = true;
         gameState.whiteSelection = false;
