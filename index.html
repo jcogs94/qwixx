@@ -8,8 +8,12 @@
     <title>Qwixx</title>
 </head>
 <body>
-    <div id="play-column">
-        <div id="message-box"></div>
+    <div id="title-box">
+        <h1>Qwixx</h1>
+        <p>A fast-paced dice rolling game</p>
+    </div>
+    <div id="play-row">
+        <div id="instructions"></div>
         <div id="board">
             <div id="number-grid">
                 <h1 id="name">QWIXX</h1>
@@ -151,21 +155,21 @@
                 <div class="score-total-box" id="total-box"></div>
             </div>
         </div>
-        <div id="display">
-            <div id="dice-box">
-                <div class="die white-die" id="white1"></div>
-                <div class="die white-die" id="white2"></div>
-                <div class="die" id="red-die"></div>
-                <div class="die" id="yellow-die"></div>
-                <div class="die" id="green-die"></div>
-                <div class="die" id="blue-die"></div>
-            </div>
-            <div id="player-buttons">
-                <button class="control-buttons" id="roll-button">Roll Dice</button>
-                <button class="control-buttons" id="new-game-button">New Game</button>
-            </div>
+        <div id="turn-box"></div>
+    </div>
+    <div id="display">
+        <div id="dice-box">
+            <div class="die white-die" id="white1"></div>
+            <div class="die white-die" id="white2"></div>
+            <div class="die" id="red-die"></div>
+            <div class="die" id="yellow-die"></div>
+            <div class="die" id="green-die"></div>
+            <div class="die" id="blue-die"></div>
+        </div>
+        <div id="player-buttons">
+            <button class="control-buttons" id="roll-button">Roll Dice</button>
+            <button class="control-buttons" id="new-game-button">New Game</button>
         </div>
     </div>
-    <div id="turn-box"></div>
 </body>
 </html>

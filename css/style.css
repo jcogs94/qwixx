@@ -6,11 +6,12 @@
 
 body {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
 }
 
-#message-box {
+#title-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,15 +29,17 @@ body {
     font-size: 1.3rem;
 }
 
-#play-column {
-    margin-left: 220px;
+#play-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-#turn-box {
+#turn-box, #instructions {
     height: 532px;
     width: 300px;
-    margin-top: 140px;
-    margin-left: 20px;
+    margin: 0 20px;
     border: 2px solid black;
     border-radius: 8px;
     background-color: whitesmoke;
