@@ -200,7 +200,14 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#penalty-points-text {
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 #penalty-row {
@@ -211,8 +218,8 @@ body {
 }
 
 #die-icon {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
     background-color: black;
 }
 
