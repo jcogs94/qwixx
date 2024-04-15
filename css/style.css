@@ -235,52 +235,64 @@ body {
     display: none;
 }
 
+.score-total-text {
+    line-height: 100%;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
 #score-total-row {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: gray;
+    background-color: rgb(167, 167, 167);
+    padding: 10px 32px;
+    gap: 15px;
 }
 
 #score-total-row > * {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 20px;
     padding: 0;
 }
 
 .score-total-box {
-    width: 100px;
+    width: 80px;
     height: 40px;
     line-height: 40px;
     font-weight: bold;
     font-size: 25px;
+    border-radius: 8px;
 }
 
-#red-total-box {
-    background-color: red;
+.total-white {
+    width: 94%;
+    height: 90%;
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: 5px;
 }
 
-#yellow-total-box {
-    background-color: yellow;
+.score-number {
+    line-height: 40px;
+    height: 100%;
+    width: 100%;
+    font-size: 1.4em;
+    text-align: center;
+    vertical-align: center;
 }
 
-#green-total-box {
-    background-color: green;
-}
-
-#blue-total-box {
-    background-color: blue;
+#total-box-container {
+    width: 180px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
 }
 
 #penalty-total-box {
     background-color: white;
-}
-
-#total-box {
-    width: 180px;
-    background-color: white;
+    border: 2px solid gray;
+    border-radius: 8px;
 }
 
 button:disabled {
