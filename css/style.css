@@ -334,6 +334,9 @@ button:disabled {
     margin: 10px auto;
     background-color: white;
     border-radius: 8px;
+    line-height: 100%;
+    font-size: 1.7em;
+    font-weight: bold;
 }
 
 #dice-box {
