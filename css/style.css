@@ -29,7 +29,7 @@ body {
     background-color: whitesmoke;
     font-weight: 900;
     gap: 5px;
-    font-size: 1.3rem;
+    font-size: 1.3em;
 }
 
 #play-row {
@@ -230,7 +230,7 @@ body {
     border: 2px solid gray;
     border-radius: 2px;
     z-index: 1;
-    font-size: 1.7rem;
+    font-size: 1.7em;
     font-weight: 900;
 }
 
@@ -306,7 +306,7 @@ button:disabled {
     position: absolute;
     font-weight: 500;
     line-height: 100%;
-    font-size: 4.5rem;
+    font-size: 1.7em;
 }
 
 #display {
@@ -402,7 +402,7 @@ button:disabled {
     justify-content: center;
     border-bottom: 2px solid black;
     line-height: 100%;
-    font-size: 2.1rem;
+    font-size: 2.1em;
     font-weight: 900;
 }
 
@@ -425,7 +425,7 @@ button:disabled {
     border-radius: 10px;
     line-height: 100%;
     font-weight: 900;
-    font-size: 2.3rem;
+    font-size: 2.1em;
 }
 
 #guide-box {
@@ -456,6 +456,6 @@ button:disabled {
 }
 
 #game-over {
-    font-size: 3rem;
+    font-size: 3em;
     font-weight: 900;
 }
