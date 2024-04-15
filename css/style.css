@@ -139,6 +139,10 @@ body {
     line-height: 100%;
 }
 
+.numbers {
+    border-radius: 6px;
+}
+
 .lock {
     border-radius: 100%;
 }
