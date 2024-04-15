@@ -63,6 +63,7 @@ const penaltyBox = () => {
         for (let i = 1; i < 5; i++) {
             if (elements.penaltyBox[i].checked === true) {
                 elements.penaltyBox[i].setAttribute('disabled', true);
+                elements.penaltyDisplay[i].innerHTML = 'X';
             }
         }
     

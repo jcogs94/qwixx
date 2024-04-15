@@ -130,6 +130,13 @@ const removeXs = () => {
     xElements.forEach( (markedBox) => {
         markedBox.remove();
     })
+
+    // Removes X's on penalty boxes
+    for (let i = 1; i < 5; i++) {
+        if (elements.penaltyDisplay[i].innerHTML === 'X') {
+            elements.penaltyDisplay[i].innerHTML = '';
+        }
+    }
 }
 
 // Resets all values in gameState

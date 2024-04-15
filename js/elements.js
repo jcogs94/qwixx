@@ -80,10 +80,13 @@ const newGameButton = document.querySelector('#new-game-button');
 
 // Penalty boxes
 const penaltyBox = {};
-const allPenaltyElements = document.querySelectorAll('.penalty-box');
+const penaltyDisplay = {};
+const allPenaltyElements = document.querySelectorAll('.penalty-checkbox');
+const allPenaltyDisplayElements = document.querySelectorAll('.checkbox-display');
 for (let i = 0; i < 4; i++) {
     let key = i + 1;
     penaltyBox[key] = allPenaltyElements[i];
+    penaltyDisplay[key] = allPenaltyDisplayElements[i];
 }
 
 // Turn box elements
@@ -98,4 +101,4 @@ export {
     red, yellow, green, blue, scores, lockButtons,
     rollButton, newGameButton, penaltyBox, dice,
     optionsContainer, optionsHeadingBox, optionsBox,
-    guideBox };
+    guideBox, penaltyDisplay };
