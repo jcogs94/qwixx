@@ -76,10 +76,14 @@ const penaltyBox = () => {
         if (gameState.playerSelectionCount.penalties === 4) {
             gameFunctions.gameOver();
         } else {
-            // Ends turn, enables roll button, and removes options display
+            // Ends turn, enables roll button
             gameState.diceRolled = false;
             elements.rollButton.removeAttribute('disabled');
+            
+            // Removes options display, and calls for roll
             displayMessage.removeColorOption('all');
+            displayMessage.removeTurnOptions();
+            displayMessage.rollPrompt();
         }
     } else {
         // Unchecks the checked box
