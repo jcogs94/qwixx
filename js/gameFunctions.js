@@ -53,6 +53,8 @@ const gameOver = () => {
         }
     })
 
+    //test
+
     // Remove options from turn box
     displayMessage.removeOptions();
 
