@@ -375,3 +375,8 @@ button:disabled {
     bottom: 35px;
     right: 85px;
 }
+
+#game-over {
+    font-size: 3rem;
+    font-weight: 900;
+}

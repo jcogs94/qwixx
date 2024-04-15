@@ -44,9 +44,13 @@ const rollDiceOption = document.createElement('h2');
 rollDiceOption.setAttribute('id', 'roll-dice-option');
 rollDiceOption.innerHTML = 'Roll Dice';
 
-const rollDicePrompt = document.createElement('h3');
-rollDicePrompt.setAttribute('id', 'roll-dice-prompt');
-rollDicePrompt.innerHTML = '<= Roll Dice';
+const rollDicePromptElement = document.createElement('h3');
+rollDicePromptElement.setAttribute('id', 'roll-dice-prompt');
+rollDicePromptElement.innerHTML = '<= Roll Dice';
+
+const gameOverElement = document.createElement('h1');
+gameOverElement.setAttribute('id', 'game-over');
+gameOverElement.innerHTML = 'GAME<br>OVER';
 
 // Remove heading and option elements from dom
 const removeOptions = () => {
@@ -210,14 +214,22 @@ const removeTurnOptions = () => {
 }
 
 const rollPrompt = () => {
-    guideBoxElement.appendChild(rollDicePrompt);
+    guideBoxElement.appendChild(rollDicePromptElement);
 }
 
 const removeRollPrompt = () => {
-    rollDicePrompt.remove();
+    rollDicePromptElement.remove();
+}
+
+const gameOver = () => {
+    guideBoxElement.appendChild(gameOverElement);
+}
+
+const removeGameOver = () => {
+    gameOverElement.remove();
 }
 
 export { removeOptions, removeColorOption, resetColorOptions,
             options, rollToBegin, removeRollToBegin, turnOptions,
             removeOptionOne, removeTurnOptions, rollPrompt,
-            removeRollPrompt };
+            removeRollPrompt, gameOver, removeGameOver };

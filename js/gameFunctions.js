@@ -33,8 +33,6 @@ const resetDice = () => {
 }
 
 const gameOver = () => {
-    console.log('Game Over!!');
-
     let interactiveElements = ['red', 'yellow', 'green', 'blue', 'penaltyBox', 'rollButton'];
     interactiveElements.forEach( (element) => {
         switch (element) {
@@ -60,6 +58,9 @@ const gameOver = () => {
 
     // Removes options in turn box
     displayMessage.removeTurnOptions();
+
+    // Display game over
+    displayMessage.gameOver();
 }
 
 // Loops through score values and displays them on the dom
@@ -194,6 +195,9 @@ const newGame = () => {
 
     // Removes any 'X' marks from previous game
     removeXs();
+
+    // Removes game over message
+    displayMessage.removeGameOver();
 
     // Removes the options from the turn box until the first roll
     displayMessage.removeOptions();
