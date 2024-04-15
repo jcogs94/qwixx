@@ -59,6 +59,9 @@ const gameOver = () => {
     // Removes options in turn box
     displayMessage.removeTurnOptions();
 
+    // Remove roll prompt
+    displayMessage.removeRollPrompt();
+
     // Display game over
     displayMessage.gameOver();
 }
