@@ -42,7 +42,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    height: 752px;
+    height: 761px;
     width: 300px;
     margin: 20px 20px 0;
     border: 2px solid black;
@@ -65,7 +65,7 @@ body {
 }
 
 .instruction {
-    font-size: .97rem;
+    font-size: .95em;
 }
 
 #play-column {
