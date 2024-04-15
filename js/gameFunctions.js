@@ -204,6 +204,9 @@ const newGame = () => {
     // Removes turn options for start of game
     displayMessage.removeTurnOptions();
 
+    // Removes roll prompt
+    displayMessage.removeRollPrompt();
+
     // Prompts player to roll dice
     displayMessage.rollToBegin();
 }
@@ -493,9 +496,14 @@ const rollDice = () => {
             gameState.start = false;
         }
 
-        // Removes roll prompt
+        // Removes roll to begin prompt
         if (document.querySelector('#roll-to-begin') !== null) {
             displayMessage.removeRollToBegin();
+        }
+
+        // Removes roll prompt
+        if (document.querySelector('#roll-dice-prompt') !== null) {
+            displayMessage.removeRollPrompt();
         }
 
         // Displays turn prompt

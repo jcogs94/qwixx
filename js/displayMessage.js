@@ -44,6 +44,10 @@ const rollDiceOption = document.createElement('h2');
 rollDiceOption.setAttribute('id', 'roll-dice-option');
 rollDiceOption.innerHTML = 'Roll Dice';
 
+const rollDicePrompt = document.createElement('h3');
+rollDicePrompt.setAttribute('id', 'roll-dice-prompt');
+rollDicePrompt.innerHTML = '<= Roll Dice';
+
 // Remove heading and option elements from dom
 const removeOptions = () => {
     optionsHeadingBoxElement.remove();
@@ -206,9 +210,14 @@ const removeTurnOptions = () => {
 }
 
 const rollPrompt = () => {
+    guideBoxElement.appendChild(rollDicePrompt);
+}
 
+const removeRollPrompt = () => {
+    rollDicePrompt.remove();
 }
 
 export { removeOptions, removeColorOption, resetColorOptions,
             options, rollToBegin, removeRollToBegin, turnOptions,
-            removeOptionOne, removeTurnOptions, rollPrompt };
+            removeOptionOne, removeTurnOptions, rollPrompt,
+            removeRollPrompt };

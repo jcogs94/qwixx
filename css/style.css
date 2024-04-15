@@ -369,3 +369,9 @@ button:disabled {
 #choose-container > * {
     margin: 5px auto 5px 20px;
 }
+
+#roll-dice-prompt {
+    position: relative;
+    bottom: 35px;
+    right: 85px;
+}
