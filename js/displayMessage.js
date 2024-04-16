@@ -1,57 +1,6 @@
 import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 
-// Defines individual option elements to be updated in options()
-const whiteOptionsElement = document.querySelector('#white-options');
-const redOptionsElement = document.querySelector('#red-options');
-const yellowOptionsElement = document.querySelector('#yellow-options');
-const greenOptionsElement = document.querySelector('#green-options');
-const blueOptionsElement = document.querySelector('#blue-options');
-
-// Creates new elements to be added during the game
-const rollToBeginElement = document.createElement('h3');
-rollToBeginElement.setAttribute('id', 'roll-to-begin');
-rollToBeginElement.innerHTML = '<= Roll dice to begin';
-
-const chooseContainerElement = document.createElement('div');
-chooseContainerElement.setAttribute('id', 'choose-container');
-
-const chooseElement = document.createElement('h2');
-chooseElement.setAttribute('id', 'choose');
-chooseElement.innerHTML = 'Choose one or both:';
-
-const chooseOptionsElement = document.createElement('ul');
-const optionOneElement = document.createElement('li');
-optionOneElement.setAttribute('id', 'option-one');
-optionOneElement.innerHTML = `Use the addition of the white dice (first)`;
-const optionTwoElement = document.createElement('li');
-optionTwoElement.setAttribute('id', 'option-two');
-optionTwoElement.innerHTML = `Use the addition of one white die and one colored die (second)`;
-chooseOptionsElement.appendChild(optionOneElement);
-chooseOptionsElement.appendChild(optionTwoElement);
-
-// Puts all necessary elements into the options container
-chooseContainerElement.appendChild(chooseElement);
-chooseContainerElement.appendChild(chooseOptionsElement);
-
-const orElement = document.createElement('h3');
-orElement.innerHTML = 'OR';
-
-const selectPenaltyElement = document.createElement('h2');
-selectPenaltyElement.innerHTML = 'Select a Penalty Box';
-
-const rollDiceOption = document.createElement('h2');
-rollDiceOption.setAttribute('id', 'roll-dice-option');
-rollDiceOption.innerHTML = 'Roll Dice';
-
-const rollDicePromptElement = document.createElement('h3');
-rollDicePromptElement.setAttribute('id', 'roll-dice-prompt');
-rollDicePromptElement.innerHTML = '<= Roll Dice';
-
-const gameOverElement = document.createElement('h1');
-gameOverElement.setAttribute('id', 'game-over');
-gameOverElement.innerHTML = 'GAME<br>OVER';
-
 // Remove heading and option elements from dom
 const removeOptionsElement = () => {
     elements.optionsHeadingBox.remove();
@@ -61,47 +10,47 @@ const removeOptionsElement = () => {
 const removeColorOption = (color) => {
     switch (color) {
         case 'all':
-            whiteOptionsElement.remove();
-            redOptionsElement.remove();
-            yellowOptionsElement.remove();
-            greenOptionsElement.remove();
-            blueOptionsElement.remove();
+            elements.turnBox.whiteOptions.remove();
+            elements.turnBox.redOptions.remove();
+            elements.turnBox.yellowOptions.remove();
+            elements.turnBox.greenOptions.remove();
+            elements.turnBox.blueOptions.remove();
             break;
         case 'white':
-            whiteOptionsElement.remove();
+            elements.turnBox.whiteOptions.remove();
             break;
         case 'red':
-            redOptionsElement.remove();
+            elements.turnBox.redOptions.remove();
             break;
         case 'yellow':
-            yellowOptionsElement.remove();
+            elements.turnBox.yellowOptions.remove();
             break;
         case 'green':
-            greenOptionsElement.remove();
+            elements.turnBox.greenOptions.remove();
             break;
         case 'blue':
-            blueOptionsElement.remove();
+            elements.turnBox.blueOptions.remove();
             break;
     }
 }
 
 const resetColorOptions = () => {
     if (document.querySelector('#white-options') === null) {
-        elements.optionsBox.prepend(whiteOptionsElement);
+        elements.optionsBox.prepend(elements.turnBox.whiteOptions);
     }
     
     if (gameState.colorInPlay.red) {
         if (document.querySelector('#red-options') === null) {
-            whiteOptionsElement.insertAdjacentElement('afterend', redOptionsElement);
+            elements.turnBox.whiteOptions.insertAdjacentElement('afterend', elements.turnBox.redOptions);
         }
     }
 
     if (gameState.colorInPlay.yellow) {
         if (document.querySelector('#yellow-options') === null) {
             if (gameState.colorInPlay.red) {
-                redOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+                elements.turnBox.redOptions.insertAdjacentElement('afterend', elements.turnBox.yellowOptions);
             } else {
-                whiteOptionsElement.insertAdjacentElement('afterend', yellowOptionsElement);
+                elements.turnBox.whiteOptions.insertAdjacentElement('afterend', elements.turnBox.yellowOptions);
             }
         }
     }
@@ -109,58 +58,58 @@ const resetColorOptions = () => {
     if (gameState.colorInPlay.green) {
         if (document.querySelector('#green-options') === null) {
             if (gameState.colorInPlay.yellow) {
-                yellowOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+                elements.turnBox.yellowOptions.insertAdjacentElement('afterend', elements.turnBox.greenOptions);
             } else if (gameState.colorInPlay.red) {
-                redOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+                elements.turnBox.redOptions.insertAdjacentElement('afterend', elements.turnBox.greenOptions);
             } else {
-                whiteOptionsElement.insertAdjacentElement('afterend', greenOptionsElement);
+                elements.turnBox.whiteOptions.insertAdjacentElement('afterend', elements.turnBox.greenOptions);
             }
         }
     }
 
     if (gameState.colorInPlay.blue) {
         if (document.querySelector('#blue-options') === null) {
-            elements.optionsBox.append(blueOptionsElement);
+            elements.optionsBox.append(elements.turnBox.blueOptions);
         }
     }
 }
 
 const options = () => {
     // Updates options with current values
-    whiteOptionsElement.innerHTML = `${gameState.rollValues.whiteTotal}`;
+    elements.turnBox.whiteOptions.innerHTML = `${gameState.rollValues.whiteTotal}`;
 
     // If statements below allow the options per color to only display one option if the combination
     // with both white dice are the same. Also removes that color from being displayed if it is no
     // longer in play
     if (gameState.colorInPlay.red) {
         if (gameState.rollValues.redWhite1 === gameState.rollValues.redWhite2) {
-            redOptionsElement.innerHTML = `${gameState.rollValues.redWhite1}`;
+            elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
         } else {
-            redOptionsElement.innerHTML = `${gameState.rollValues.redWhite1} / ${gameState.rollValues.redWhite2}`;
+            elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1} / ${gameState.rollValues.redWhite2}`;
         }
     }
 
     if (gameState.colorInPlay.yellow) {
         if (gameState.rollValues.yellowWhite1 === gameState.rollValues.yellowWhite2) {
-            yellowOptionsElement.innerHTML = `${gameState.rollValues.yellowWhite1}`;
+            elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
         } else {
-            yellowOptionsElement.innerHTML = `${gameState.rollValues.yellowWhite1} / ${gameState.rollValues.yellowWhite2}`;
+            elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1} / ${gameState.rollValues.yellowWhite2}`;
         }
     }
 
     if (gameState.colorInPlay.green) {
         if (gameState.rollValues.greenWhite1 === gameState.rollValues.greenWhite2) {
-            greenOptionsElement.innerHTML = `${gameState.rollValues.greenWhite1}`;
+            elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
         } else {
-            greenOptionsElement.innerHTML = `${gameState.rollValues.greenWhite1} / ${gameState.rollValues.greenWhite2}`;
+            elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1} / ${gameState.rollValues.greenWhite2}`;
         }
     }
 
     if (gameState.colorInPlay.blue) {
         if (gameState.rollValues.blueWhite1 === gameState.rollValues.blueWhite2) {
-            blueOptionsElement.innerHTML = `${gameState.rollValues.blueWhite1}`;
+            elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
         } else {
-            blueOptionsElement.innerHTML = `${gameState.rollValues.blueWhite1} / ${gameState.rollValues.blueWhite2}`;
+            elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1} / ${gameState.rollValues.blueWhite2}`;
         }
     }
     
@@ -175,58 +124,58 @@ const options = () => {
 }
 
 const rollToBegin = () => {
-    elements.guideBox.appendChild(rollToBeginElement);
+    elements.guideBox.appendChild(elements.turnBox.rollToBegin);
 }
 
 const removeRollToBegin = () => {
-    rollToBeginElement.remove();
+    elements.turnBox.rollToBegin.remove();
 }
 
 const turnOptions = () => {
     if (document.querySelector('#roll-dice-option') !== null) {
-        rollDiceOption.remove();
+        elements.turnBox.rollDiceOption.remove();
     }
 
     if (document.querySelector('#option-one') === null) {
-        chooseOptionsElement.prepend(optionOneElement);
+        elements.turnBox.chooseOptions.prepend(elements.turnBox.optionOne);
     }
 
     if (document.querySelector('#option-two') === null) {
-        chooseOptionsElement.appendChild(optionTwoElement);
+        elements.turnBox.chooseOptions.appendChild(elements.turnBox.optionTwo);
     }
     
-    elements.guideBox.appendChild(chooseContainerElement);
-    elements.guideBox.appendChild(orElement);
-    elements.guideBox.appendChild(selectPenaltyElement);
+    elements.guideBox.appendChild(elements.turnBox.chooseContainer);
+    elements.guideBox.appendChild(elements.turnBox.or);
+    elements.guideBox.appendChild(elements.turnBox.selectPenalty);
 }
 
 const removeOptionOne = () => {
     document.querySelector('#option-one').remove();
-    selectPenaltyElement.remove();
-    elements.guideBox.appendChild(rollDiceOption);
+    elements.turnBox.selectPenalty.remove();
+    elements.guideBox.appendChild(elements.turnBox.rollDiceOption);
 }
 
 const removeTurnOptions = () => {
-    chooseContainerElement.remove();
-    orElement.remove();
-    selectPenaltyElement.remove();
-    rollDiceOption.remove();
+    elements.turnBox.chooseContainer.remove();
+    elements.turnBox.or.remove();
+    elements.turnBox.selectPenalty.remove();
+    elements.turnBox.rollDiceOption.remove();
 }
 
 const rollPrompt = () => {
-    elements.guideBox.appendChild(rollDicePromptElement);
+    elements.guideBox.appendChild(elements.turnBox.rollDicePrompt);
 }
 
 const removeRollPrompt = () => {
-    rollDicePromptElement.remove();
+    elements.turnBox.rollDicePrompt.remove();
 }
 
 const gameOver = () => {
-    elements.guideBox.appendChild(gameOverElement);
+    elements.guideBox.appendChild(elements.turnBox.gameOver);
 }
 
 const removeGameOver = () => {
-    gameOverElement.remove();
+    elements.turnBox.gameOver.remove();
 }
 
 export { removeOptionsElement, removeColorOption, resetColorOptions,
