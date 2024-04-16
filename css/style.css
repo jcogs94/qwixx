@@ -203,7 +203,7 @@ body {
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 #penalty-points-text {
@@ -219,9 +219,14 @@ body {
 }
 
 #die-icon {
-    height: 30px;
-    width: 30px;
-    background-color: black;
+    color: rgb(0, 0, 0, .5);
+}
+
+#icon-x {
+    position: relative;
+    bottom: 0;
+    left: 5px;
+    font-size: 1.2em;
 }
 
 .checkbox-label:checked {
