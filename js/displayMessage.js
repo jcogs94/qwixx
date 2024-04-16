@@ -1,4 +1,4 @@
-import { optionsContainer as optionsContainerElement, optionsHeadingBox as optionsHeadingBoxElement, optionsBox as optionsBoxElement, guideBox as guideBoxElement } from "./elements.js";
+import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 
 // Defines individual option elements to be updated in options()
@@ -54,8 +54,8 @@ gameOverElement.innerHTML = 'GAME<br>OVER';
 
 // Remove heading and option elements from dom
 const removeOptionsElement = () => {
-    optionsHeadingBoxElement.remove();
-    optionsBoxElement.remove();
+    elements.optionsHeadingBox.remove();
+    elements.optionsBox.remove();
 }
 
 const removeColorOption = (color) => {
@@ -87,7 +87,7 @@ const removeColorOption = (color) => {
 
 const resetColorOptions = () => {
     if (document.querySelector('#white-options') === null) {
-        optionsBoxElement.prepend(whiteOptionsElement);
+        elements.optionsBox.prepend(whiteOptionsElement);
     }
     
     if (gameState.colorInPlay.red) {
@@ -120,7 +120,7 @@ const resetColorOptions = () => {
 
     if (gameState.colorInPlay.blue) {
         if (document.querySelector('#blue-options') === null) {
-            optionsBoxElement.append(blueOptionsElement);
+            elements.optionsBox.append(blueOptionsElement);
         }
     }
 }
@@ -166,8 +166,8 @@ const options = () => {
     
     // Insert heading and options elements to dom if previously removed
     if (document.querySelector('#options-heading-box') === null) {
-        optionsContainerElement.appendChild(optionsHeadingBoxElement);
-        optionsContainerElement.appendChild(optionsBoxElement);
+        elements.optionsContainer.appendChild(elements.optionsHeadingBox);
+        elements.optionsContainer.appendChild(elements.optionsBox);
     }
 
     // Resets all color option that may have been removed from the previous turn
@@ -175,7 +175,7 @@ const options = () => {
 }
 
 const rollToBegin = () => {
-    guideBoxElement.appendChild(rollToBeginElement);
+    elements.guideBox.appendChild(rollToBeginElement);
 }
 
 const removeRollToBegin = () => {
@@ -195,15 +195,15 @@ const turnOptions = () => {
         chooseOptionsElement.appendChild(optionTwoElement);
     }
     
-    guideBoxElement.appendChild(chooseContainerElement);
-    guideBoxElement.appendChild(orElement);
-    guideBoxElement.appendChild(selectPenaltyElement);
+    elements.guideBox.appendChild(chooseContainerElement);
+    elements.guideBox.appendChild(orElement);
+    elements.guideBox.appendChild(selectPenaltyElement);
 }
 
 const removeOptionOne = () => {
     document.querySelector('#option-one').remove();
     selectPenaltyElement.remove();
-    guideBoxElement.appendChild(rollDiceOption);
+    elements.guideBox.appendChild(rollDiceOption);
 }
 
 const removeTurnOptions = () => {
@@ -214,7 +214,7 @@ const removeTurnOptions = () => {
 }
 
 const rollPrompt = () => {
-    guideBoxElement.appendChild(rollDicePromptElement);
+    elements.guideBox.appendChild(rollDicePromptElement);
 }
 
 const removeRollPrompt = () => {
@@ -222,7 +222,7 @@ const removeRollPrompt = () => {
 }
 
 const gameOver = () => {
-    guideBoxElement.appendChild(gameOverElement);
+    elements.guideBox.appendChild(gameOverElement);
 }
 
 const removeGameOver = () => {
