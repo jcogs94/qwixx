@@ -16,6 +16,10 @@ body {
     align-items: center;
 }
 
+#title-box, #name, .scoring, .score-total-text, .score-number, #penalties-reference, .die, #options-heading-box, #options-box, #guide-box, #instructions-box {
+    cursor: default;
+}
+
 #title-box {
     display: flex;
     flex-direction: column;
@@ -366,6 +370,7 @@ button:disabled {
     line-height: 100%;
     font-size: 27px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #dice-box {
