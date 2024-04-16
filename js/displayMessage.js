@@ -1,5 +1,6 @@
 import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
+import { updateOptionValues } from "./utils.js";
 
 // Remove heading and option elements from dom
 const removeOptionsElement = () => {
@@ -78,40 +79,8 @@ const options = () => {
     // Updates options with current values
     elements.turnBox.whiteOptions.innerHTML = `${gameState.rollValues.whiteTotal}`;
 
-    // If statements below allow the options per color to only display one option if the combination
-    // with both white dice are the same. Also removes that color from being displayed if it is no
-    // longer in play
-    if (gameState.colorInPlay.red) {
-        if (gameState.rollValues.redWhite1 === gameState.rollValues.redWhite2) {
-            elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
-        } else {
-            elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1} / ${gameState.rollValues.redWhite2}`;
-        }
-    }
-
-    if (gameState.colorInPlay.yellow) {
-        if (gameState.rollValues.yellowWhite1 === gameState.rollValues.yellowWhite2) {
-            elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
-        } else {
-            elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1} / ${gameState.rollValues.yellowWhite2}`;
-        }
-    }
-
-    if (gameState.colorInPlay.green) {
-        if (gameState.rollValues.greenWhite1 === gameState.rollValues.greenWhite2) {
-            elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
-        } else {
-            elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1} / ${gameState.rollValues.greenWhite2}`;
-        }
-    }
-
-    if (gameState.colorInPlay.blue) {
-        if (gameState.rollValues.blueWhite1 === gameState.rollValues.blueWhite2) {
-            elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
-        } else {
-            elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1} / ${gameState.rollValues.blueWhite2}`;
-        }
-    }
+    // Updates options elements with valid plays
+    updateOptionValues();
     
     // Insert heading and options elements to dom if previously removed
     if (document.querySelector('#options-heading-box') === null) {
