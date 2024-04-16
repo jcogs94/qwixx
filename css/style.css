@@ -230,6 +230,7 @@ body {
 
 #die-icon {
     color: rgb(0, 0, 0, .5);
+    font-size: 24px;
 }
 
 #icon-x {
@@ -263,8 +264,8 @@ body {
 
 .score-total-text {
     line-height: 100%;
-    font-size: 1.5em;
-    font-weight: bolder;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 #score-total-row {
@@ -467,10 +468,23 @@ button:disabled {
     position: relative;
     right: 45px;
     bottom: 35px;
+    font-size: 19px;
 }
 
 #choose-container > * {
     margin: 5px auto 5px 20px;
+}
+
+#choose-container > h2 {
+    font-size: 24px;
+}
+
+#choose-container > ul > li {
+    font-size: 16px;
+}
+
+#choose-container > h3 {
+    font-size: 18px;
 }
 
 #roll-dice-prompt {
