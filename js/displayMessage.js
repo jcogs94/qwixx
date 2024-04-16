@@ -35,43 +35,29 @@ const removeColorOption = (color) => {
     }
 }
 
+// Removes all turn box options and adds them if they are valid plays
 const resetColorOptions = () => {
-    if (document.querySelector('#white-options') === null) {
-        elements.optionsBox.prepend(elements.turnBox.whiteOptions);
+    // Resets options in turn box
+    removeColorOption('all');
+    
+    if (gameState.displayColorOption.white === true) {
+        elements.optionsBox.append(elements.turnBox.whiteOptions);
     }
     
-    if (gameState.colorInPlay.red) {
-        if (document.querySelector('#red-options') === null) {
-            elements.turnBox.whiteOptions.insertAdjacentElement('afterend', elements.turnBox.redOptions);
-        }
+    if (gameState.displayColorOption.red === true) {
+        elements.optionsBox.append(elements.turnBox.redOptions);
     }
-
-    if (gameState.colorInPlay.yellow) {
-        if (document.querySelector('#yellow-options') === null) {
-            if (gameState.colorInPlay.red) {
-                elements.turnBox.redOptions.insertAdjacentElement('afterend', elements.turnBox.yellowOptions);
-            } else {
-                elements.turnBox.whiteOptions.insertAdjacentElement('afterend', elements.turnBox.yellowOptions);
-            }
-        }
+    
+    if (gameState.displayColorOption.yellow === true) {
+        elements.optionsBox.append(elements.turnBox.yellowOptions);
     }
-
-    if (gameState.colorInPlay.green) {
-        if (document.querySelector('#green-options') === null) {
-            if (gameState.colorInPlay.yellow) {
-                elements.turnBox.yellowOptions.insertAdjacentElement('afterend', elements.turnBox.greenOptions);
-            } else if (gameState.colorInPlay.red) {
-                elements.turnBox.redOptions.insertAdjacentElement('afterend', elements.turnBox.greenOptions);
-            } else {
-                elements.turnBox.whiteOptions.insertAdjacentElement('afterend', elements.turnBox.greenOptions);
-            }
-        }
+    
+    if (gameState.displayColorOption.green === true) {
+        elements.optionsBox.append(elements.turnBox.greenOptions);
     }
-
-    if (gameState.colorInPlay.blue) {
-        if (document.querySelector('#blue-options') === null) {
-            elements.optionsBox.append(elements.turnBox.blueOptions);
-        }
+    
+    if (gameState.displayColorOption.blue === true) {
+        elements.optionsBox.append(elements.turnBox.blueOptions);
     }
 }
 

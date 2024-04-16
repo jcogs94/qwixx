@@ -387,6 +387,9 @@ const crossOutInput = (color, num, lock) => {
     // Update scores and score board
     updateScoreBoard();
 
+    // Updates options
+    utils.updateOptionValues();
+
     if (gameState.colorInPlay.count === 2) {
         gameOver();
     }

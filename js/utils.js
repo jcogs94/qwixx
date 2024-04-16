@@ -95,38 +95,215 @@ const additionValid = (inputColor, inputNum) => {
 }
 
 const updateOptionValues = () => {
+    // Resets diplay color for each color to false, to be set to true again based on conditions
+    const displayColorKeys = Object.keys(gameState.displayColorOption);
+    displayColorKeys.forEach( (key) => {
+        gameState.displayColorOption[key] = false;
+    });
+
     // If statements below allow the options per color to only display one option if the combination
     // with both white dice are the same. Also removes that color from being displayed if it is no
     // longer in play
+    let option1 = 0;
+    let option1Valid = false;
+    let option2 = 0;
+    let option2Valid = false;
+    let mostLeftNumber = 0;
+
+    // Displays white if there is a valid move using it, else remove option
+    if (gameState.rollValues.whiteTotal > gameState.colorStatus.lowestRed ||
+        gameState.rollValues.whiteTotal > gameState.colorStatus.lowestYellow ||
+        gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen ||
+        gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen) {
+            gameState.displayColorOption.white = true;
+    } else {
+        displayMessage.removeColorOption('white');
+    }
+
+    // Updates red if it is in play
     if (gameState.colorInPlay.red) {
+        mostLeftNumber = gameState.colorStatus.lowestRed;
+        
+        // If the combination of the red and either white dice is the same number, display number true if valid
+        // else, both num variables are updated and checked before displaying true
         if (gameState.rollValues.redWhite1 === gameState.rollValues.redWhite2) {
-            elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
+            if (gameState.rollValues.redWhite1 > mostLeftNumber) {
+                elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
+                gameState.displayColorOption.red = true;
+            } else {
+                displayMessage.removeColorOption('red');
+            }
         } else {
-            elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1} / ${gameState.rollValues.redWhite2}`;
+            // Adjusts the order of the numbers based on order of the board
+            if (gameState.rollValues.redWhite1 < gameState.rollValues.redWhite2) {
+                option1 = gameState.rollValues.redWhite1;
+                option2 = gameState.rollValues.redWhite2;
+            } else {
+                option1 = gameState.rollValues.redWhite2;
+                option2 = gameState.rollValues.redWhite1;
+            }
+            
+            if (option1 > mostLeftNumber) {
+                option1Valid = true;
+            }
+            
+            if (option2 > mostLeftNumber) {
+                option2Valid = true;
+            }
+            
+            if (option1Valid && option2Valid) {
+                gameState.displayColorOption.red = true;
+                elements.turnBox.redOptions.innerHTML = `${option1} / ${option2}`;
+            } else if (option1Valid) {
+                gameState.displayColorOption.red = true;
+                elements.turnBox.redOptions.innerHTML = `${option1}`;
+            } else if (option2Valid) {
+                gameState.displayColorOption.red = true;
+                elements.turnBox.redOptions.innerHTML = `${option2}`;
+            } else {
+                displayMessage.removeColorOption('red');
+            }
+
+            option1Valid = false;
+            option2Valid = false;
         }
     }
 
+    // Updates yellow if in play
     if (gameState.colorInPlay.yellow) {
+        mostLeftNumber = gameState.colorStatus.lowestYellow;
+        
         if (gameState.rollValues.yellowWhite1 === gameState.rollValues.yellowWhite2) {
-            elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
+            if (gameState.rollValues.yellowWhite1 > mostLeftNumber) {
+                elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
+                gameState.displayColorOption.yellow = true;
+            } else {
+                displayMessage.removeColorOption('yellow');
+            }
         } else {
-            elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1} / ${gameState.rollValues.yellowWhite2}`;
+            // Adjusts the order of the numbers based on order of the board
+            if (gameState.rollValues.yellowWhite1 < gameState.rollValues.yellowWhite2) {
+                option1 = gameState.rollValues.yellowWhite1;
+                option2 = gameState.rollValues.yellowWhite2;
+            } else {
+                option1 = gameState.rollValues.yellowWhite2;
+                option2 = gameState.rollValues.yellowWhite1;
+            }
+            
+            if (option1 > mostLeftNumber) {
+                option1Valid = true;
+            }
+            
+            if (option2 > mostLeftNumber) {
+                option2Valid = true;
+            }
+
+            if (option1Valid && option2Valid) {
+                gameState.displayColorOption.yellow = true;
+                elements.turnBox.yellowOptions.innerHTML = `${option1} / ${option2}`;
+            } else if (option1Valid) {
+                gameState.displayColorOption.yellow = true;
+                elements.turnBox.yellowOptions.innerHTML = `${option1}`;
+            } else if (option2Valid) {
+                gameState.displayColorOption.yellow = true;
+                elements.turnBox.yellowOptions.innerHTML = `${option2}`;
+            } else {
+                displayMessage.removeColorOption('yellow');
+            }
+
+            option1Valid = false;
+            option2Valid = false;
         }
     }
-
+    
+    // Updates green if in play
     if (gameState.colorInPlay.green) {
+        mostLeftNumber = gameState.colorStatus.highestGreen;
+        
         if (gameState.rollValues.greenWhite1 === gameState.rollValues.greenWhite2) {
-            elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
+            if (gameState.rollValues.greenWhite1 < mostLeftNumber) {
+                elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
+                gameState.displayColorOption.green = true;
+            } else {
+                displayMessage.removeColorOption('green');
+            }
         } else {
-            elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1} / ${gameState.rollValues.greenWhite2}`;
+            // Adjusts the order of the numbers based on order of the board
+            if (gameState.rollValues.greenWhite1 > gameState.rollValues.greenWhite2) {
+                option1 = gameState.rollValues.greenWhite1;
+                option2 = gameState.rollValues.greenWhite2;
+            } else {
+                option1 = gameState.rollValues.greenWhite2;
+                option2 = gameState.rollValues.greenWhite1;
+            }
+            
+            if (option1 < mostLeftNumber) {
+                option1Valid = true;
+            }
+            
+            if (option2 < mostLeftNumber) {
+                option2Valid = true;
+            }
+            
+            if (option1Valid && option2Valid) {
+                gameState.displayColorOption.green = true;
+                elements.turnBox.greenOptions.innerHTML = `${option1} / ${option2}`;
+            } else if (option1Valid) {
+                gameState.displayColorOption.green = true;
+                elements.turnBox.greenOptions.innerHTML = `${option1}`;
+            } else if (option2Valid) {
+                gameState.displayColorOption.green = true;
+                elements.turnBox.greenOptions.innerHTML = `${option2}`;
+            } else {
+                displayMessage.removeColorOption('green');
+            }
+
+            option1Valid = false;
+            option2Valid = false;
         }
     }
 
+    // Updates blue if in play
     if (gameState.colorInPlay.blue) {
+        mostLeftNumber = gameState.colorStatus.highestBlue;
+        
         if (gameState.rollValues.blueWhite1 === gameState.rollValues.blueWhite2) {
-            elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
+            if (gameState.rollValues.blueWhite1 < mostLeftNumber) {
+                elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
+                gameState.displayColorOption.blue = true;
+            } else {
+                displayMessage.removeColorOption('blue');
+            }
         } else {
-            elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1} / ${gameState.rollValues.blueWhite2}`;
+            // Adjusts the order of the numbers based on order of the board
+            if (gameState.rollValues.blueWhite1 > gameState.rollValues.blueWhite2) {
+                option1 = gameState.rollValues.blueWhite1;
+                option2 = gameState.rollValues.blueWhite2;
+            } else {
+                option1 = gameState.rollValues.blueWhite2;
+                option2 = gameState.rollValues.blueWhite1;
+            }
+            
+            if (option1 < mostLeftNumber) {
+                option1Valid = true;
+            }
+            
+            if (option2 < mostLeftNumber) {
+                option2Valid = true;
+            }
+            
+            if (option1Valid && option2Valid) {
+                gameState.displayColorOption.blue = true;
+                elements.turnBox.blueOptions.innerHTML = `${option1} / ${option2}`;
+            } else if (option1Valid) {
+                gameState.displayColorOption.blue = true;
+                elements.turnBox.blueOptions.innerHTML = `${option1}`;
+            } else if (option2Valid) {
+                gameState.displayColorOption.blue = true;
+                elements.turnBox.blueOptions.innerHTML = `${option2}`;
+            } else {
+                displayMessage.removeColorOption('blue');
+            }
         }
     }
 }

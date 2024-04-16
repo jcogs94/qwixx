@@ -47,6 +47,13 @@ let gameState = {
         green: true,
         blue: true
     },
+    displayColorOption: {
+        white: false,
+        red: false,
+        yellow: false,
+        green: false,
+        blue: false
+    },
     colorLockAvailable: {
         red: false,
         yellow: false,
