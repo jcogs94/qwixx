@@ -53,7 +53,7 @@ gameOverElement.setAttribute('id', 'game-over');
 gameOverElement.innerHTML = 'GAME<br>OVER';
 
 // Remove heading and option elements from dom
-const removeOptions = () => {
+const removeOptionsElement = () => {
     optionsHeadingBoxElement.remove();
     optionsBoxElement.remove();
 }
@@ -229,7 +229,7 @@ const removeGameOver = () => {
     gameOverElement.remove();
 }
 
-export { removeOptions, removeColorOption, resetColorOptions,
+export { removeOptionsElement, removeColorOption, resetColorOptions,
             options, rollToBegin, removeRollToBegin, turnOptions,
             removeOptionOne, removeTurnOptions, rollPrompt,
             removeRollPrompt, gameOver, removeGameOver };

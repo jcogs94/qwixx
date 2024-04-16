@@ -54,7 +54,7 @@ const gameOver = () => {
     })
 
     // Remove options from turn box
-    displayMessage.removeOptions();
+    displayMessage.removeOptionsElement();
 
     // Removes options in turn box
     displayMessage.removeTurnOptions();
@@ -210,7 +210,7 @@ const newGame = () => {
     displayMessage.removeGameOver();
 
     // Removes the options from the turn box until the first roll
-    displayMessage.removeOptions();
+    displayMessage.removeOptionsElement();
 
     // Resets color options that may have previously been removed
     displayMessage.resetColorOptions();

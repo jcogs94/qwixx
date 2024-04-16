@@ -244,10 +244,6 @@ body {
     font-size: 29px;
 }
 
-.checkbox-label:checked {
-    background-color: black;
-}
-
 .checkbox-display {
     height: 35px;
     width: 28px;
