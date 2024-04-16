@@ -111,10 +111,7 @@ const updateOptionValues = () => {
     let mostLeftNumber = 0;
 
     // Displays white if there is a valid move using it, else remove option
-    if (gameState.rollValues.whiteTotal > gameState.colorStatus.lowestRed ||
-        gameState.rollValues.whiteTotal > gameState.colorStatus.lowestYellow ||
-        gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen ||
-        gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen) {
+    if ( (gameState.rollValues.whiteTotal > gameState.colorStatus.lowestRed) || (gameState.rollValues.whiteTotal > gameState.colorStatus.lowestYellow) || (gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen) || (gameState.rollValues.whiteTotal < gameState.colorStatus.highestBlue)) {
             let whiteHighValid = false;
             let whiteLowValid = false;
             
@@ -135,13 +132,13 @@ const updateOptionValues = () => {
                     gameState.displayColorOption.white = true;
                 }
             } else if (gameState.rollValues.whiteTotal === 2) {
-                if (gameState.colorInPlay.red && gameState.colorLockAvailable.red) {
+                if (gameState.colorInPlay.green && gameState.colorLockAvailable.green) {
                     whiteHighValid = true;
-                } else if (gameState.colorInPlay.yellow && gameState.colorLockAvailable.yellow) {
+                } else if (gameState.colorInPlay.blue && gameState.colorLockAvailable.blue) {
                     whiteHighValid = true;
-                } else if (12 < gameState.colorStatus.highestGreen) {
+                } else if (2 > gameState.colorStatus.lowestRed) {
                     whiteLowValid = true;
-                } else if (12 < gameState.colorStatus.highestBlue) {
+                } else if (2 > gameState.colorStatus.lowestYellow) {
                     whiteLowValid = true;
                 }
 

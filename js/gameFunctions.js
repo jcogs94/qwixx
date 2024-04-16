@@ -388,10 +388,26 @@ const crossOutInput = (color, num, lock) => {
     updateScoreBoard();
 
     // Updates options
-    utils.updateOptionValues();
+    if (!gameState.combinationSelection) {
+        utils.updateOptionValues();
+    }
 
-    if (gameState.colorInPlay.count === 2) {
-        gameOver();
+    if (gameState.colorInPlay.count <= 2) {
+        if (gameState.combinationSelection) {
+            gameOver();
+        } else {
+            let secondMoveAvailable = false;
+            const displayOptionsKeys = Object.keys(gameState.displayColorOption);
+            displayOptionsKeys.forEach( (key) => {
+                if (gameState.displayColorOption[key] === true) {
+                    secondMoveAvailable = true;
+                }
+            })
+
+            if (!secondMoveAvailable) {
+                gameOver();
+            }
+        }
     }
 }
 
