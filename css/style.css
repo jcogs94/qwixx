@@ -256,6 +256,7 @@ body {
     z-index: 1;
     font-size: 27px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .penalty-checkbox {
