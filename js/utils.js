@@ -115,7 +115,42 @@ const updateOptionValues = () => {
         gameState.rollValues.whiteTotal > gameState.colorStatus.lowestYellow ||
         gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen ||
         gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen) {
-            gameState.displayColorOption.white = true;
+            let whiteHighValid = false;
+            let whiteLowValid = false;
+            
+            // If it is a 12 or 2, checks if it is valid for any color
+            // Any other number has already been checked and displays white
+            if (gameState.rollValues.whiteTotal === 12) {
+                if (gameState.colorInPlay.red && gameState.colorLockAvailable.red) {
+                    whiteHighValid = true;
+                } else if (gameState.colorInPlay.yellow && gameState.colorLockAvailable.yellow) {
+                    whiteHighValid = true;
+                } else if (12 < gameState.colorStatus.highestGreen) {
+                    whiteLowValid = true;
+                } else if (12 < gameState.colorStatus.highestBlue) {
+                    whiteLowValid = true;
+                }
+
+                if (whiteHighValid || whiteLowValid) {
+                    gameState.displayColorOption.white = true;
+                }
+            } else if (gameState.rollValues.whiteTotal === 2) {
+                if (gameState.colorInPlay.red && gameState.colorLockAvailable.red) {
+                    whiteHighValid = true;
+                } else if (gameState.colorInPlay.yellow && gameState.colorLockAvailable.yellow) {
+                    whiteHighValid = true;
+                } else if (12 < gameState.colorStatus.highestGreen) {
+                    whiteLowValid = true;
+                } else if (12 < gameState.colorStatus.highestBlue) {
+                    whiteLowValid = true;
+                }
+
+                if (whiteHighValid || whiteLowValid) {
+                    gameState.displayColorOption.white = true;
+                }
+            } else {
+                gameState.displayColorOption.white = true;
+            }
     } else {
         displayMessage.removeColorOption('white');
     }
@@ -128,8 +163,15 @@ const updateOptionValues = () => {
         // else, both num variables are updated and checked before displaying true
         if (gameState.rollValues.redWhite1 === gameState.rollValues.redWhite2) {
             if (gameState.rollValues.redWhite1 > mostLeftNumber) {
-                elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
-                gameState.displayColorOption.red = true;
+                if (gameState.rollValues.redWhite1 === 12) {
+                    if (gameState.colorLockAvailable.red) {
+                        elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
+                        gameState.displayColorOption.red = true;
+                    }
+                } else {
+                    elements.turnBox.redOptions.innerHTML = `${gameState.rollValues.redWhite1}`;
+                    gameState.displayColorOption.red = true;
+                }
             } else {
                 displayMessage.removeColorOption('red');
             }
@@ -148,7 +190,13 @@ const updateOptionValues = () => {
             }
             
             if (option2 > mostLeftNumber) {
-                option2Valid = true;
+                if (option2 === 12) {
+                    if (gameState.colorLockAvailable.red) {
+                        option2Valid = true;
+                    }
+                } else {
+                    option2Valid = true;
+                }
             }
             
             if (option1Valid && option2Valid) {
@@ -175,8 +223,15 @@ const updateOptionValues = () => {
         
         if (gameState.rollValues.yellowWhite1 === gameState.rollValues.yellowWhite2) {
             if (gameState.rollValues.yellowWhite1 > mostLeftNumber) {
-                elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
-                gameState.displayColorOption.yellow = true;
+                if (gameState.rollValues.yellowWhite1 === 12) {
+                    if (gameState.colorLockAvailable.yellow) {
+                        elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
+                        gameState.displayColorOption.yellow = true;
+                    }
+                } else {
+                    elements.turnBox.yellowOptions.innerHTML = `${gameState.rollValues.yellowWhite1}`;
+                    gameState.displayColorOption.yellow = true;
+                }
             } else {
                 displayMessage.removeColorOption('yellow');
             }
@@ -195,7 +250,13 @@ const updateOptionValues = () => {
             }
             
             if (option2 > mostLeftNumber) {
-                option2Valid = true;
+                if (option2 === 12) {
+                    if (gameState.colorLockAvailable.yellow) {
+                        option2Valid = true;
+                    }
+                } else {
+                    option2Valid = true;
+                }
             }
 
             if (option1Valid && option2Valid) {
@@ -222,8 +283,15 @@ const updateOptionValues = () => {
         
         if (gameState.rollValues.greenWhite1 === gameState.rollValues.greenWhite2) {
             if (gameState.rollValues.greenWhite1 < mostLeftNumber) {
-                elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
-                gameState.displayColorOption.green = true;
+                if (gameState.rollValues.greenWhite1 === 2) {
+                    if (gameState.colorLockAvailable.green) {
+                        elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
+                        gameState.displayColorOption.green = true;
+                    }
+                } else {
+                    elements.turnBox.greenOptions.innerHTML = `${gameState.rollValues.greenWhite1}`;
+                    gameState.displayColorOption.green = true;
+                }
             } else {
                 displayMessage.removeColorOption('green');
             }
@@ -242,7 +310,13 @@ const updateOptionValues = () => {
             }
             
             if (option2 < mostLeftNumber) {
-                option2Valid = true;
+                if (option2 === 2) {
+                    if (gameState.colorLockAvailable.green) {
+                        option2Valid = true;
+                    }
+                } else {
+                    option2Valid = true;
+                }
             }
             
             if (option1Valid && option2Valid) {
@@ -269,8 +343,15 @@ const updateOptionValues = () => {
         
         if (gameState.rollValues.blueWhite1 === gameState.rollValues.blueWhite2) {
             if (gameState.rollValues.blueWhite1 < mostLeftNumber) {
-                elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
-                gameState.displayColorOption.blue = true;
+                if (gameState.rollValues.blueWhite1 === 2) {
+                    if (gameState.colorLockAvailable.blue) {
+                        elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
+                        gameState.displayColorOption.blue = true;
+                    }
+                } else {
+                    elements.turnBox.blueOptions.innerHTML = `${gameState.rollValues.blueWhite1}`;
+                    gameState.displayColorOption.blue = true;
+                }
             } else {
                 displayMessage.removeColorOption('blue');
             }
@@ -289,7 +370,13 @@ const updateOptionValues = () => {
             }
             
             if (option2 < mostLeftNumber) {
-                option2Valid = true;
+                if (option2 === 2) {
+                    if (gameState.colorLockAvailable.blue) {
+                        option2Valid = true;
+                    }
+                } else {
+                    option2Valid = true;
+                }
             }
             
             if (option1Valid && option2Valid) {
