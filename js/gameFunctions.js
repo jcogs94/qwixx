@@ -461,8 +461,7 @@ const validateInput = () => {
         }
     }
     else {
-        // Placeholder for displaying error message
-        console.log('Invalid selection.');
+        // Placeholder for displaying invalid selection error message
     }
 }
 
@@ -562,7 +561,7 @@ const rollDice = () => {
         // Disables roll dice button until turn complete
         elements.rollButton.setAttribute('disabled', 'true');
     } else {
-        console.log("Dice can't be rolled right now.");
+        // Can't roll dice error placeholder
     }
 }
 

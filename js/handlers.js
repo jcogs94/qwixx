@@ -9,10 +9,6 @@ const red = (redButtonPressed) => {
     gameState.playerChoice = `red ${redButtonPressed}`;
     if (gameState.diceRolled) {
         gameFunctions.validateInput();
-    } else if (gameState.start) {
-        console.log('Roll first to start the game');
-    } else {
-        console.log('Turn over, no more selections.');
     }
 }
 
@@ -20,10 +16,6 @@ const yellow = (yellowButtonPressed) => {
     gameState.playerChoice = `yellow ${yellowButtonPressed}`;
     if (gameState.diceRolled) {
         gameFunctions.validateInput();
-    } else if (gameState.start) {
-        console.log('Roll first to start the game');
-    } else {
-        console.log('Turn over, no more selections.');
     }
 }
 
@@ -31,10 +23,6 @@ const green = (greenButtonPressed) => {
     gameState.playerChoice = `green ${greenButtonPressed}`;
     if (gameState.diceRolled) {
         gameFunctions.validateInput();
-    } else if (gameState.start) {
-        console.log('Roll first to start the game');
-    } else {
-        console.log('Turn over, no more selections.');
     }
 }
 
@@ -42,10 +30,6 @@ const blue = (blueButtonPressed) => {
     gameState.playerChoice = `blue ${blueButtonPressed}`;
     if (gameState.diceRolled) {
         gameFunctions.validateInput();
-    } else if (gameState.start) {
-        console.log('Roll first to start the game');
-    } else {
-        console.log('Turn over, no more selections.');
     }
 }
 
