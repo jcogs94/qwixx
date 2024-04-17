@@ -237,7 +237,7 @@ const disableToLeft = (color) => {
                     element.setAttribute('disabled', true);
                 }
 
-                if (gameState.colorStatus.lowestRed === 11 && gameState.playerSelectionCount.red < 5) {
+                if (gameState.colorStatus.lowestRed === 11 && gameState.playerSelectionCount.red < 4) {
                     gameState.colorInPlay.red = false;
                     displayMessage.removeColorOption('red');
                 }
@@ -248,7 +248,7 @@ const disableToLeft = (color) => {
                     element.setAttribute('disabled', true);
                 }
                 
-                if (gameState.colorStatus.lowestYellow === 11 && gameState.playerSelectionCount.yellow < 5) {
+                if (gameState.colorStatus.lowestYellow === 11 && gameState.playerSelectionCount.yellow < 4) {
                     gameState.colorInPlay.yellow = false;
                     displayMessage.removeColorOption('yellow');
                 }
@@ -259,7 +259,7 @@ const disableToLeft = (color) => {
                     element.setAttribute('disabled', true);
                 }
                 
-                if (gameState.colorStatus.highestGreen === 3 && gameState.playerSelectionCount.green < 5) {
+                if (gameState.colorStatus.highestGreen === 3 && gameState.playerSelectionCount.green < 4) {
                     gameState.colorInPlay.green = false;
                     displayMessage.removeColorOption('green');
                 }
@@ -270,7 +270,7 @@ const disableToLeft = (color) => {
                     element.setAttribute('disabled', true);
                 }
                 
-                if (gameState.colorStatus.highestBlue === 3 && gameState.playerSelectionCount.blue < 5) {
+                if (gameState.colorStatus.highestBlue === 3 && gameState.playerSelectionCount.blue < 4) {
                     gameState.colorInPlay.blue = false;
                     displayMessage.removeColorOption('blue');
                 }
