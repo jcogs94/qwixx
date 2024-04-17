@@ -262,6 +262,9 @@ const disableToLeft = (color) => {
 
 // Checks if player has reached 5 of a color and unlocks last two boxes
 const lockCheck = (color, num, lock) => {
+    // Else if statements determine if the last number before lock has been played, and player has not
+    // marked out 5 of that color yet, disables the color for the rest of the game (not legal for the color
+    // to be finished)
     if (gameState.playerSelectionCount[color] >= 5 && gameState.colorLockAvailable[color] === false && gameState.colorInPlay[color]) {
         elements.lockButtons[color].forEach( (lock) => {
             lock.removeAttribute('disabled');
