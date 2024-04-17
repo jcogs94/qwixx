@@ -236,21 +236,11 @@ const disableToLeft = (color) => {
                 if (parseInt(element.innerText) <= gameState.colorStatus.lowestRed) {
                     element.setAttribute('disabled', true);
                 }
-
-                if (gameState.colorStatus.lowestRed === 11 && gameState.playerSelectionCount.red < 4) {
-                    gameState.colorInPlay.red = false;
-                    displayMessage.removeColorOption('red');
-                }
                 
                 break;
             case 'yellow':
                 if (parseInt(element.innerText) <= gameState.colorStatus.lowestYellow) {
                     element.setAttribute('disabled', true);
-                }
-                
-                if (gameState.colorStatus.lowestYellow === 11 && gameState.playerSelectionCount.yellow < 4) {
-                    gameState.colorInPlay.yellow = false;
-                    displayMessage.removeColorOption('yellow');
                 }
                 
                 break;
@@ -259,20 +249,10 @@ const disableToLeft = (color) => {
                     element.setAttribute('disabled', true);
                 }
                 
-                if (gameState.colorStatus.highestGreen === 3 && gameState.playerSelectionCount.green < 4) {
-                    gameState.colorInPlay.green = false;
-                    displayMessage.removeColorOption('green');
-                }
-                
                 break;
             case 'blue':
                 if (parseInt(element.innerText) >= gameState.colorStatus.highestBlue) {
                     element.setAttribute('disabled', true);
-                }
-                
-                if (gameState.colorStatus.highestBlue === 3 && gameState.playerSelectionCount.blue < 4) {
-                    gameState.colorInPlay.blue = false;
-                    displayMessage.removeColorOption('blue');
                 }
                 
                 break;
@@ -287,6 +267,18 @@ const lockCheck = (color, num, lock) => {
             lock.removeAttribute('disabled');
         });
         gameState.colorLockAvailable[color] = true;
+    } else if (gameState.colorStatus.lowestRed === 11 && gameState.colorLockAvailable.red === false) {
+        gameState.colorInPlay.red = false;
+        displayMessage.removeColorOption('red');
+    } else if (gameState.colorStatus.lowestYellow === 11 && gameState.colorLockAvailable.yellow === false) {
+        gameState.colorInPlay.yellow = false;
+        displayMessage.removeColorOption('yellow');
+    } else if (gameState.colorStatus.highestGreen === 3 && gameState.colorLockAvailable.green === false) {
+        gameState.colorInPlay.green = false;
+        displayMessage.removeColorOption('green');
+    } else if (gameState.colorStatus.highestBlue === 3 && gameState.colorLockAvailable.blue === false) {
+        gameState.colorInPlay.blue = false;
+        displayMessage.removeColorOption('blue');
     }
 }
 
