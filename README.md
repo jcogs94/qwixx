@@ -24,14 +24,15 @@ You can find the link to play the game [here](https://jcogs94.github.io/qwixx/) 
 - Import/export function found from [Scaler](https://www.scaler.com/topics/javascript/import-js-file-in-js/).
 
 ## Technologies Used:
+- Javascript
 - HTML
 - CSS
-- Javascript
 
 ## Next Steps:
 - Make the site more mobile-friendly. As of right now, the site is useable on mobile devices, but requires users to zoom out/in to fit the screen properly. A hamburger menu could display instructions and the turn box could be placed closer to the board, with the board filling the screen properly.
 - As of right now, the site is not compatible with Safari browsers. It displays sub-par, but is functional. The instructions in the instructions box displays off the the right of its container, underneath the board.
-- Make a "score reference guide" box that shows reference for the player. For instance: "~ < 25 points: terrible, try again".
+- Make a "score reference guide" box that shows reference for the player. For instance:
+    > ~ < 25 points: terrible, try again
 - Refine the display of the dice, showing how they would normally look, with pips instead of a number character.
 - Have the dice perform an animated roll (or shake) when the roll button is pushed.
 - Display an arrow pointing to the penalty boxes when there are no valid moves. As of right now, the game leaves it up to the user to realize that, with no guidance for newer players.
