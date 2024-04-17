@@ -2,13 +2,16 @@
 ##### A fast-paced dice rolling game
 
 ## Overview
-"This quick-playing dice game will have you on the edge of your seat from beginning to end! Qwixx is simple to play but each decision is crucial - the more numbers you cross off, the more points you score. With no downtime between turns, you'll have a change to gain from each and every roll. Just one round of this thrilling game and you will be caught up in Qwixx-fever!"
-- Gamewright
+>"This quick-playing dice game will have you on the edge of your seat from beginning to end! Qwixx is simple to play but each decision is crucial - the more numbers you cross off, the more points you score. With no downtime between turns, you'll have a change to gain from each and every roll. Just one round of this thrilling game and you will be caught up in Qwixx-fever!"
+> `-` Gamewright
+
+![New Game Screenshot](/img/new-game-screenshot.jpg)
+
+![In Game Screenshot](/img/in-game-screenshot.jpg)
 
 #### This Version:
 In this solo variant, you are able to leave the distraction of other players behind and focus on scoring the highest points possible.
 
 ## Getting Started:
-Below you can find the link to play the game and see the process that I took:
-Game: 
-Planning: 
+You can find the link to play the game [here](https://jcogs94.github.io/qwixx/) and see the process that I took [here](/res/Project%20Week%201%20Timeline.pdf).
+
