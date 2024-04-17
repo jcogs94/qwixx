@@ -33,6 +33,9 @@ You can find the link to play the game [here](https://jcogs94.github.io/qwixx/) 
 - As of right now, the site is not compatible with Safari browsers. It displays sub-par, but is functional. The instructions in the instructions box displays off the the right of its container, underneath the board.
 - Make a "score reference guide" box that shows reference for the player. For instance:
     > ~ < 25 points: terrible, try again
+    > 26-50 points: starting to do better
+    > 51-100 points: luck must be on your side
+    > 100+ points: impressive
 - Refine the display of the dice, showing how they would normally look, with pips instead of a number character.
 - Have the dice perform an animated roll (or shake) when the roll button is pushed.
 - Display an arrow pointing to the penalty boxes when there are no valid moves. As of right now, the game leaves it up to the user to realize that, with no guidance for newer players.
