@@ -102,39 +102,12 @@ const blueClass = new ColorElement('blue');
 // ~~~~~BUTTON SELECTION ELEMENTS~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// Define empty objects to obtain button elements by color
+// Uses class references for button reference
+// Will be removed once classes are integrated fully
 let red = redClass.buttonElements;
 let yellow = yellowClass.buttonElements;
 let green = greenClass.buttonElements;
 let blue = blueClass.buttonElements;
-
-// Obtain red button elements
-const redRow = document.querySelector('.red');
-const redChildren = redRow.children;
-for (let element of redChildren) {
-    red[element.innerHTML] = element;
-}
-
-// Obtain yellow button elements
-const yellowRow = document.querySelector('.yellow');
-const yellowChildren = yellowRow.children;
-for (let element of yellowChildren) {
-    yellow[element.innerHTML] = element;
-}
-
-// Obtain green button elements
-const greenRow = document.querySelector('.green');
-const greenChildren = greenRow.children;
-for (let element of greenChildren) {
-    green[element.innerHTML] = element;
-}
-
-// Obtain blue button elements
-const blueRow = document.querySelector('.blue');
-const blueChildren = blueRow.children;
-for (let element of blueChildren) {
-    blue[element.innerHTML] = element;
-}
 
 // Score box elements
 const scores = {
