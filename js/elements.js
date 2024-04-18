@@ -70,12 +70,20 @@ class Element {
     constructor(reference) {
         this.reference = reference;
     }
+
+    static getSelectorString(domType, name) {
+        if (domType === 'class') {
+            return `.${name}`;
+        } else if (domType === 'id') {
+            return `#${name}`;
+        }
+    }
 }
 
+// Creates a class for use by individual colors and their dom elements
 class ColorElement extends Element {
     static getButtonElements(color) {
-        let selectorString = `.${color}`;
-        let row = document.querySelector(selectorString);
+        let row = document.querySelector(Element.getSelectorString('class', color));
         const rowChildren = row.children;
         let buttonElements = {};
 
