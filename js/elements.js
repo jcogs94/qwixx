@@ -92,27 +92,21 @@ class ColorElement extends Element {
     }
 }
 
+// Defines new class objects for each color
 const redClass = new ColorElement('red');
-console.log(redClass.buttonElements);
-
 const yellowClass = new ColorElement('yellow');
-console.log(yellowClass.buttonElements);
-
 const greenClass = new ColorElement('green');
-console.log(greenClass.buttonElements);
-
 const blueClass = new ColorElement('blue');
-console.log(blueClass.buttonElements);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~~BUTTON SELECTION ELEMENTS~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Define empty objects to obtain button elements by color
-let red = {};
-let yellow = {};
-let green = {};
-let blue = {};
+let red = redClass.buttonElements;
+let yellow = yellowClass.buttonElements;
+let green = greenClass.buttonElements;
+let blue = blueClass.buttonElements;
 
 // Obtain red button elements
 const redRow = document.querySelector('.red');
