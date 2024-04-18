@@ -71,6 +71,8 @@ class Element {
         this.reference = reference;
     }
 
+    // Returns a selector string to obtain dom elements
+    // using the assed the type (class/id) and name of that type
     static getSelectorString(domType, name) {
         if (domType === 'class') {
             return `.${name}`;
@@ -82,17 +84,23 @@ class Element {
 
 // Creates a class for use by individual colors and their dom elements
 class ColorElement extends Element {
+    // Returns an object containing the button elements and their displayed value as their key
     static getButtonElements(color) {
+        // Obtains the row for the color, puts their children (the buttons) in an object, and defines an empty
+        // object to return after the loop
         let row = document.querySelector(Element.getSelectorString('class', color));
         const rowChildren = row.children;
         let buttonElements = {};
 
+        // Loops through the button objects and defines them by key, storing them in the
+        // object to be returned
         for (let button of rowChildren) {
             buttonElements[button.innerHTML] = button;
         }
         
         return buttonElements;
     }
+
     constructor(color, reference) {
         super(reference);
         this.color = color;
