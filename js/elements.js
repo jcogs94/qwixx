@@ -66,6 +66,44 @@ const turnBox = {
     gameOver: gameOver
 }
 
+class Element {
+    constructor(reference) {
+        this.reference = reference;
+    }
+}
+
+class ColorElement extends Element {
+    static getButtonElements(color) {
+        let selectorString = `.${color}`;
+        let row = document.querySelector(selectorString);
+        const rowChildren = row.children;
+        let buttonElements = {};
+
+        for (let button of rowChildren) {
+            buttonElements[button.innerHTML] = button;
+        }
+        
+        return buttonElements;
+    }
+    constructor(color, reference) {
+        super(reference);
+        this.color = color;
+        this.buttonElements = ColorElement.getButtonElements(this.color);
+    }
+}
+
+const redClass = new ColorElement('red');
+console.log(redClass.buttonElements);
+
+const yellowClass = new ColorElement('yellow');
+console.log(yellowClass.buttonElements);
+
+const greenClass = new ColorElement('green');
+console.log(greenClass.buttonElements);
+
+const blueClass = new ColorElement('blue');
+console.log(blueClass.buttonElements);
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~~BUTTON SELECTION ELEMENTS~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
