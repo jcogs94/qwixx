@@ -146,7 +146,15 @@ const updateOptionValues = () => {
                     gameState.displayColorOption.white = true;
                 }
             } else {
-                gameState.displayColorOption.white = true;
+                if (gameState.rollValues.whiteTotal > gameState.colorStatus.lowestRed) {
+                    gameState.displayColorOption.white = true;
+                } else if (gameState.rollValues.whiteTotal > gameState.colorStatus.lowestYellow) {
+                    gameState.displayColorOption.white = true;
+                } else if (gameState.rollValues.whiteTotal < gameState.colorStatus.highestGreen) {
+                    gameState.displayColorOption.white = true;
+                } else if (gameState.rollValues.whiteTotal < gameState.colorStatus.highestBlue) {
+                    gameState.displayColorOption.white = true;
+                }
             }
     } else {
         displayMessage.removeColorOption('white');
