@@ -85,17 +85,17 @@ class rollDice {
 
     // Calculates all possible values per roll
     calcOptions() {
-        let options = {};
-
-        options[whiteTotal] = this.white1 + this.white2;
-        options[redWhite1] = this.red + this.white1;
-        options[redWhite2] = this.red + this.white2;
-        options[yellowWhite1] = this.yellow + this.white1;
-        options[yellowWhite2] = this.yellow + this.white2;
-        options[greenWhite1] = this.green + this.white1;
-        options[greenWhite2] = this.green + this.white2;
-        options[blueWhite1] = this.blue + this.white1;
-        options[blueWhite2] = this.blue + this.white2;
+        let options = {
+            whiteTotal: this.white1 + this.white2,
+            redWhite1: this.red + this.white1,
+            redWhite2: this.red + this.white2,
+            yellowWhite1: this.yellow + this.white1,
+            yellowWhite2: this.yellow + this.white2,
+            greenWhite1: this.green + this.white1,
+            greenWhite2: this.green + this.white2,
+            blueWhite1: this.blue + this.white1,
+            blueWhite2: this.blue + this.white2
+        };
 
         return options;
     }
