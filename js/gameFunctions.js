@@ -46,6 +46,8 @@ const gameOver = () => {
                 break;
         }
     })
+
+    // Locks all colors
     elements.red.lockColor();
     elements.yellow.lockColor();
     elements.green.lockColor();

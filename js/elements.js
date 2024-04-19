@@ -116,6 +116,7 @@ class Color {
         }
     }
 
+    // Locks entire row of buttons for this color
     lockColor() {
         let rowKeys = Object.keys(this.buttonElements);
         rowKeys.forEach( (key) => {
