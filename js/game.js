@@ -99,6 +99,15 @@ class rollDice {
 
         return options;
     }
+
+    updateDisplay() {
+        this.elements.white1.innerHTML = this.white1;
+        this.elements.white2.innerHTML = this.white2;
+        this.elements.red.innerHTML = this.red;
+        this.elements.yellow.innerHTML = this.yellow;
+        this.elements.green.innerHTML = this.green;
+        this.elements.blue.innerHTML = this.blue;
+    }
     
     constructor() {
         // Rolls each die and saves each as obj property

@@ -4,8 +4,11 @@ import { newGame } from "./gameFunctions.js";
 import { addListeners } from "./listeners.js";
 import { Color, Game, rollDice } from "./game.js";
 
-console.dir(new Game);
-console.dir(new rollDice);
+const game = new Game;
+console.dir(game);
+
+const roll = new rollDice;
+console.dir(roll);
 
 // Defines new class objects for each color
 const red = new Color('red');
@@ -20,6 +23,8 @@ newGame();
 // Adds all listeners for buttons
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 addListeners();
+
+// roll.updateDisplay();
 
 export {
     red, yellow, green, blue
