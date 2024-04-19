@@ -73,7 +73,7 @@ class Element {
 }
 
 // Creates a class for use by individual colors and their dom elements
-class ColorElement extends Element {
+class Color {
     // Returns an object containing the button elements and their displayed value as their key
     static getButtonElements(color) {
         // Obtains the row for the color, puts their children (the buttons) in an object, and defines an empty
@@ -101,10 +101,10 @@ class ColorElement extends Element {
 }
 
 // Defines new class objects for each color
-const redClass = new ColorElement('red');
-const yellowClass = new ColorElement('yellow');
-const greenClass = new ColorElement('green');
-const blueClass = new ColorElement('blue');
+const redClass = new Color('red');
+const yellowClass = new Color('yellow');
+const greenClass = new Color('green');
+const blueClass = new Color('blue');
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~~BUTTON SELECTION ELEMENTS~~~~~~
