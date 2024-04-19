@@ -143,6 +143,13 @@ class Game {
         this.yellow = new Color('yellow');
         this.green = new Color('green');
         this.blue = new Color('blue');
+
+        this.elements = {
+            score: {
+                penalty: document.querySelector('#penalty-total-box'),
+                total: document.querySelector('#total-box')
+            }
+        }
     }
 }
 
