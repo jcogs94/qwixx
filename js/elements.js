@@ -102,7 +102,6 @@ class ColorElement extends Element {
 
 // Defines new class objects for each color
 const redClass = new ColorElement('red');
-console.dir(redClass);
 const yellowClass = new ColorElement('yellow');
 const greenClass = new ColorElement('green');
 const blueClass = new ColorElement('blue');
