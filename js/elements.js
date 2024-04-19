@@ -91,12 +91,11 @@ class Color {
         return buttonElements;
     }
 
-    constructor(color, reference) {
-        super(reference);
+    constructor(color) {
         this.color = color;
         this.scoreElement = document.querySelector(`#${color}-total-box`);
         this.dieElement = document.querySelector(`#${color}-die`);
-        this.buttonElements = ColorElement.getButtonElements(this.color);
+        this.buttonElements = ColorElement.getButtonElements(color);
     }
 }
 
