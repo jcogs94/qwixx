@@ -33,10 +33,14 @@ class Color {
         this.displayColorOption = false;
         this.lockAvailable = false;
 
+        // Defines left most number based on whether board numbers go up or down
+        // also defines numGoUp for those colors
         if (color === 'red' || color === 'yellow') {
             this.leftMostNum = 0;
+            this.numGoUp = true;
         } else {
             this.leftMostNum = 13;
+            this.numGoUp = false;
         };
 
         this.elements = {
