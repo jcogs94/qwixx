@@ -95,26 +95,36 @@ class Color {
         this.color = color;
         this.scoreElement = document.querySelector(`#${color}-total-box`);
         this.dieElement = document.querySelector(`#${color}-die`);
-        this.buttonElements = ColorElement.getButtonElements(color);
+        this.buttonElements = Color.getButtonElements(color);
+    }
+
+    addX(num) {
+        // Create 'X' element to go on top of selected box
+        const boxMark = document.createElement('h1');
+        boxMark.setAttribute('class', 'box-mark');
+        boxMark.innerText = 'X';
+
+        // Adds 'X' to box selected, if 'L', referenced separately
+        if (num === 0) {
+            // Append new 'X' element to the 'L' selected
+            this.buttonElements[num].appendChild(boxMark);
+        }
+        else {
+            // Append new 'X' element to the number selected
+            this.buttonElements[num].appendChild(boxMark);
+        }
     }
 }
 
 // Defines new class objects for each color
-const redClass = new Color('red');
-const yellowClass = new Color('yellow');
-const greenClass = new Color('green');
-const blueClass = new Color('blue');
+const red = new Color('red');
+const yellow = new Color('yellow');
+const green = new Color('green');
+const blue = new Color('blue');
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~~BUTTON SELECTION ELEMENTS~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-// Uses class references for button reference
-// Will be removed once classes are integrated fully
-let red = redClass.buttonElements;
-let yellow = yellowClass.buttonElements;
-let green = greenClass.buttonElements;
-let blue = blueClass.buttonElements;
 
 // Score box elements
 const scores = {

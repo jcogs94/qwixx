@@ -1,7 +1,7 @@
 import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as displayMessage from "./displayMessage.js";
-import * as utils from "./utils.js"
+import * as utils from "./utils.js";
 
 // Resets dice display to be blank
 const resetDice = () => {
@@ -103,9 +103,26 @@ const resetDisabledButtons = () => {
     let color = ['red', 'yellow', 'green', 'blue']
     // Loops through each color[] and uses its key to remove 'disabled' attributes of all buttons
     for (let i = 0; i < 4; i++) {
-        buttonKey = Object.keys(elements[color[i]]);
+        let colorButtonElements;
+
+        switch (color[i]) {
+            case 'red':
+                colorButtonElements = elements.red.buttonElements;
+                break;
+            case 'yellow':
+                colorButtonElements = elements.yellow.buttonElements;
+                break;
+            case 'green':
+                colorButtonElements = elements.green.buttonElements;
+                break;
+            case 'blue':
+                colorButtonElements = elements.blue.buttonElements;
+                break;
+        }
+
+        buttonKey = Object.keys(colorButtonElements);
         buttonKey.forEach( (key) => {
-            elements[color[i]][key].removeAttribute('disabled');
+            colorButtonElements[key].removeAttribute('disabled');
         })
     }
 
@@ -228,7 +245,25 @@ const newGame = () => {
 // Disables buttons to the left of the user selection to have visual reference
 // to the player that those moves are invalid
 const disableToLeft = (color) => {
-    const colorRowElements = Object.values(elements[color]);
+    // Temp reference for change to class
+    let colorButtonElements;
+    switch (color) {
+        case 'red':
+            colorButtonElements = elements.red.buttonElements;
+            break;
+        case 'yellow':
+            colorButtonElements = elements.yellow.buttonElements;
+            break;
+        case 'green':
+            colorButtonElements = elements.green.buttonElements;
+            break;
+        case 'blue':
+            colorButtonElements = elements.blue.buttonElements;
+            break;
+    }
+
+
+    const colorRowElements = Object.values(colorButtonElements);
     colorRowElements.forEach((element) => {
         // Determines the color and disables buttons to the left of the highest selection
         switch (color) {
@@ -321,19 +356,20 @@ const crossOutInput = (color, num, lock) => {
     // Updates the number of boxes selected for that color
     gameState.playerSelectionCount[color]++;
 
-    // Create 'X' element to go on top of selected box
-    const boxMark = document.createElement('h1');
-    boxMark.setAttribute('class', 'box-mark');
-    boxMark.innerText = 'X';
-
-    // Adds 'X' to box selected, if 'L', referenced separately
-    if (num === 0) {
-        // Append new 'X' element to the 'L' selected
-        elements[color]['L'].appendChild(boxMark);
-    }
-    else {
-        // Append new 'X' element to the number selected
-        elements[color][num].appendChild(boxMark);
+    // Adds X to button selected
+    switch (color) {
+        case 'red':
+            elements.red.addX(num);
+            break;
+        case 'yellow':
+            elements.yellow.addX(num);
+            break;
+        case 'green':
+            elements.green.addX(num);
+            break;
+        case 'blue':
+            elements.blue.addX(num);
+            break;
     }
 
     // Enables 'lock' buttons if more than five of that
