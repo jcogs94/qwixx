@@ -98,6 +98,7 @@ class Color {
         this.buttonElements = Color.getButtonElements(color);
     }
 
+    // Crosses out number given from caller
     addX(num) {
         // Create 'X' element to go on top of selected box
         const boxMark = document.createElement('h1');
@@ -107,12 +108,19 @@ class Color {
         // Adds 'X' to box selected, if 'L', referenced separately
         if (num === 0) {
             // Append new 'X' element to the 'L' selected
-            this.buttonElements[num].appendChild(boxMark);
+            this.buttonElements['L'].appendChild(boxMark);
         }
         else {
             // Append new 'X' element to the number selected
             this.buttonElements[num].appendChild(boxMark);
         }
+    }
+
+    lockColor() {
+        let rowKeys = Object.keys(this.buttonElements);
+        rowKeys.forEach( (key) => {
+            this.buttonElements[key].setAttribute('disabled', true);
+        });
     }
 }
 

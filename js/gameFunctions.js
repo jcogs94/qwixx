@@ -44,14 +44,12 @@ const gameOver = () => {
             case ('rollButton'):
                 elements[element].setAttribute('disabled', true);
                 break;
-            default:
-                let colorKey = Object.keys(elements[element]);
-                colorKey.forEach( (key) => {
-                    elements[element][key].setAttribute('disabled', true);
-                });
-                break;
         }
     })
+    elements.red.lockColor();
+    elements.yellow.lockColor();
+    elements.green.lockColor();
+    elements.blue.lockColor();
 
     // Remove options from turn box
     displayMessage.removeOptionsElement();
@@ -379,34 +377,46 @@ const crossOutInput = (color, num, lock) => {
     // If a lock has been selected, also marks the adjacent
     // box and adjusts the score
     if (lock) {
-        // Copied from above for new 'X', can re-write?
-        const lockMark = document.createElement('h1');
-        lockMark.setAttribute('class', 'box-mark');
-        lockMark.innerText = 'X';
-        
         // Marks adjacent box
         if (num === 0) {
             // Player hit 'L' button
     
             // Marks either 12 or 2, depending on color
-            if (color === 'red' || color === 'yellow') {
-                elements[color]['12'].appendChild(lockMark);
-            } else if (color === 'green' || color === 'blue') {
-                elements[color]['2'].appendChild(lockMark);
+            if (color === 'red') {
+                elements.red.addX(12);
+            } else if (color === 'yellow') {
+                elements.yellow.addX(12);
+            } else if (color === 'green') {
+                elements.green.addX(2);
+            } else if (color === 'blue') {
+                elements.blue.addX(2);
             }
         } else if (num === 12 || num === 2) {
             // Player hit '12' button
             
             // Marks 'L'
-            elements[color]['L'].appendChild(lockMark);
+            if (color === 'red') {
+                elements.red.addX(0);
+            } else if (color === 'yellow') {
+                elements.yellow.addX(0);
+            } else if (color === 'green') {
+                elements.green.addX(0);
+            } else if (color === 'blue') {
+                elements.blue.addX(0);
+            }
         }
         
         // Lock whole row
-        let colorRow = Object.keys(elements[color]);
-        colorRow.forEach( (key) => {
-            elements[color][key].setAttribute('disabled', true);
-        });
-
+        if (color === 'red') {
+            elements.red.lockColor();
+        } else if (color === 'yellow') {
+            elements.yellow.lockColor();
+        } else if (color === 'green') {
+            elements.green.lockColor();
+        } else if (color === 'blue') {
+            elements.blue.lockColor();
+        }
+        
         // Removes locked color die from game
         removeColor(color);
 
