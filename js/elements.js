@@ -104,6 +104,7 @@ class ColorElement extends Element {
     constructor(color, reference) {
         super(reference);
         this.color = color;
+        this.scoreElement = document.querySelector(Element.getSelectorString('id', `${color}-total-box`))
         this.buttonElements = ColorElement.getButtonElements(this.color);
     }
 }
