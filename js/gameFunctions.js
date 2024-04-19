@@ -113,16 +113,16 @@ const resetDisabledButtons = () => {
 
         switch (color[i]) {
             case 'red':
-                colorButtonElements = red.buttonElements;
+                colorButtonElements = red.elements.buttons;
                 break;
             case 'yellow':
-                colorButtonElements = yellow.buttonElements;
+                colorButtonElements = yellow.elements.buttons;
                 break;
             case 'green':
-                colorButtonElements = green.buttonElements;
+                colorButtonElements = green.elements.buttons;
                 break;
             case 'blue':
-                colorButtonElements = blue.buttonElements;
+                colorButtonElements = blue.elements.buttons;
                 break;
         }
 
@@ -255,16 +255,16 @@ const disableToLeft = (color) => {
     let colorButtonElements;
     switch (color) {
         case 'red':
-            colorButtonElements = red.buttonElements;
+            colorButtonElements = red.elements.buttons;
             break;
         case 'yellow':
-            colorButtonElements = yellow.buttonElements;
+            colorButtonElements = yellow.elements.buttons;
             break;
         case 'green':
-            colorButtonElements = green.buttonElements;
+            colorButtonElements = green.elements.buttons;
             break;
         case 'blue':
-            colorButtonElements = blue.buttonElements;
+            colorButtonElements = blue.elements.buttons;
             break;
     }
 

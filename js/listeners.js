@@ -6,7 +6,7 @@ const addListeners = () => {
     // Iterating objects through method learned in url below:
     // https://www.freecodecamp.org/news/how-to-iterate-over-objects-in-javascript/
     // Red button listeners
-    let redButtons = Object.values(red.buttonElements);
+    let redButtons = Object.values(red.elements.buttons);
     redButtons.forEach((element) => {
         element.addEventListener('click', () => {
             handler.red(element.innerHTML);
@@ -14,7 +14,7 @@ const addListeners = () => {
     })
 
     // Yellow button listeners
-    let yellowButtons = Object.values(yellow.buttonElements);
+    let yellowButtons = Object.values(yellow.elements.buttons);
     yellowButtons.forEach((element) => {
         element.addEventListener('click', () => {
             handler.yellow(element.innerHTML);
@@ -22,7 +22,7 @@ const addListeners = () => {
     })
 
     // Green button listeners
-    let greenButtons = Object.values(green.buttonElements);
+    let greenButtons = Object.values(green.elements.buttons);
     greenButtons.forEach((element) => {
         element.addEventListener('click', () => {
             handler.green(element.innerHTML);
@@ -30,7 +30,7 @@ const addListeners = () => {
     })
 
     // Blue button listeners
-    let blueButtons = Object.values(blue.buttonElements);
+    let blueButtons = Object.values(blue.elements.buttons);
     blueButtons.forEach((element) => {
         element.addEventListener('click', () => {
             handler.blue(element.innerHTML);

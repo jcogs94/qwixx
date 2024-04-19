@@ -2,8 +2,9 @@
 // https://www.scaler.com/topics/javascript/import-js-file-in-js/
 import { newGame } from "./gameFunctions.js";
 import { addListeners } from "./listeners.js";
-import { Color } from "./game.js";
+import { Color, Game } from "./game.js";
 
+console.dir(new Game);
 
 // Defines new class objects for each color
 const red = new Color('red');
