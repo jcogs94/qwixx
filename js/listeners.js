@@ -1,6 +1,6 @@
 import * as elements from "./elements.js";
 import * as handler from "./handlers.js";
-import { red, yellow, green, blue } from "./elements.js";
+import { red, yellow, green, blue } from "./app.js";
 
 const addListeners = () => {
     // Iterating objects through method learned in url below:

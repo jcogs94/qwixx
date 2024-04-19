@@ -2,6 +2,7 @@ import * as elements from "./elements.js";
 import { gameState } from "./gameState.js";
 import * as displayMessage from "./displayMessage.js";
 import * as utils from "./utils.js";
+import { red, yellow, green, blue } from "./app.js";
 
 // Resets dice display to be blank
 const resetDice = () => {
@@ -32,6 +33,14 @@ const resetDice = () => {
     })
 }
 
+// Locks all colors by calling their lock color method
+const lockAllColors = () => {
+    red.lockColor();
+    yellow.lockColor();
+    green.lockColor();
+    blue.lockColor();
+}
+
 const gameOver = () => {
     let interactiveElements = ['red', 'yellow', 'green', 'blue', 'penaltyBox', 'rollButton'];
     interactiveElements.forEach( (element) => {
@@ -48,10 +57,7 @@ const gameOver = () => {
     })
 
     // Locks all colors
-    elements.red.lockColor();
-    elements.yellow.lockColor();
-    elements.green.lockColor();
-    elements.blue.lockColor();
+    lockAllColors();
 
     // Remove options from turn box
     displayMessage.removeOptionsElement();
@@ -107,16 +113,16 @@ const resetDisabledButtons = () => {
 
         switch (color[i]) {
             case 'red':
-                colorButtonElements = elements.red.buttonElements;
+                colorButtonElements = red.buttonElements;
                 break;
             case 'yellow':
-                colorButtonElements = elements.yellow.buttonElements;
+                colorButtonElements = yellow.buttonElements;
                 break;
             case 'green':
-                colorButtonElements = elements.green.buttonElements;
+                colorButtonElements = green.buttonElements;
                 break;
             case 'blue':
-                colorButtonElements = elements.blue.buttonElements;
+                colorButtonElements = blue.buttonElements;
                 break;
         }
 
@@ -249,16 +255,16 @@ const disableToLeft = (color) => {
     let colorButtonElements;
     switch (color) {
         case 'red':
-            colorButtonElements = elements.red.buttonElements;
+            colorButtonElements = red.buttonElements;
             break;
         case 'yellow':
-            colorButtonElements = elements.yellow.buttonElements;
+            colorButtonElements = yellow.buttonElements;
             break;
         case 'green':
-            colorButtonElements = elements.green.buttonElements;
+            colorButtonElements = green.buttonElements;
             break;
         case 'blue':
-            colorButtonElements = elements.blue.buttonElements;
+            colorButtonElements = blue.buttonElements;
             break;
     }
 
@@ -359,16 +365,16 @@ const crossOutInput = (color, num, lock) => {
     // Adds X to button selected
     switch (color) {
         case 'red':
-            elements.red.addX(num);
+            red.addX(num);
             break;
         case 'yellow':
-            elements.yellow.addX(num);
+            yellow.addX(num);
             break;
         case 'green':
-            elements.green.addX(num);
+            green.addX(num);
             break;
         case 'blue':
-            elements.blue.addX(num);
+            blue.addX(num);
             break;
     }
 
@@ -385,38 +391,38 @@ const crossOutInput = (color, num, lock) => {
     
             // Marks either 12 or 2, depending on color
             if (color === 'red') {
-                elements.red.addX(12);
+                red.addX(12);
             } else if (color === 'yellow') {
-                elements.yellow.addX(12);
+                yellow.addX(12);
             } else if (color === 'green') {
-                elements.green.addX(2);
+                green.addX(2);
             } else if (color === 'blue') {
-                elements.blue.addX(2);
+                blue.addX(2);
             }
         } else if (num === 12 || num === 2) {
             // Player hit '12' button
             
             // Marks 'L'
             if (color === 'red') {
-                elements.red.addX(0);
+                red.addX(0);
             } else if (color === 'yellow') {
-                elements.yellow.addX(0);
+                yellow.addX(0);
             } else if (color === 'green') {
-                elements.green.addX(0);
+                green.addX(0);
             } else if (color === 'blue') {
-                elements.blue.addX(0);
+                blue.addX(0);
             }
         }
         
         // Lock whole row
         if (color === 'red') {
-            elements.red.lockColor();
+            red.lockColor();
         } else if (color === 'yellow') {
-            elements.yellow.lockColor();
+            yellow.lockColor();
         } else if (color === 'green') {
-            elements.green.lockColor();
+            green.lockColor();
         } else if (color === 'blue') {
-            elements.blue.lockColor();
+            blue.lockColor();
         }
         
         // Removes locked color die from game
